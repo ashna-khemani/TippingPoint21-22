@@ -1,33 +1,17 @@
-/*----------------------------------------------------------------------------*/
-/*                                                                            */
-/*    Module:       main.cpp                                                  */
-/*    Author:       VEX                                                       */
-/*    Created:      Thu Sep 26 2019                                           */
-/*    Description:  Competition Template                                      */
-/*                                                                            */
-/*----------------------------------------------------------------------------*/
-
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// ---- END VEXCODE CONFIGURED DEVICES ----
-
 #include "vex.h"
-
+#include "bot-functions.h"
 using namespace vex;
-
-// A global instance of competition
 competition Competition;
 
-// define your global instances of motors and other devices here
 
-/*---------------------------------------------------------------------------*/
-/*                          Pre-Autonomous Functions                         */
-/*                                                                           */
-/*  You may want to perform some actions before the competition starts.      */
-/*  Do them in the following function.  You must return from this function   */
-/*  or the autonomous and usercontrol tasks will not be started.  This       */
-/*  function is only called once after the V5 has been powered on and        */
-/*  not every time that the robot is disabled.                               */
-/*---------------------------------------------------------------------------*/
+// //Filter function for driving ---------
+int filter (int value) {
+  if (abs(value) > 16) {
+    return (value);
+  } else {
+    return (0);
+  }
+}
 
 void pre_auton(void) {
   // Initializing Robot Configuration. DO NOT REMOVE!
@@ -37,20 +21,22 @@ void pre_auton(void) {
   // Example: clearing encoders, setting servo positions, ...
 }
 
-/*---------------------------------------------------------------------------*/
-/*                                                                           */
-/*                              Autonomous Task                              */
-/*                                                                           */
-/*  This task is used to control your robot during the autonomous phase of   */
-/*  a VEX Competition.                                                       */
-/*                                                                           */
-/*  You must modify the code to add your own robot specific commands here.   */
-/*---------------------------------------------------------------------------*/
-
 void autonomous(void) {
-  // ..........................................................................
-  // Insert autonomous user code here.
-  // ..........................................................................
+  // deploy back lift
+  // zoom fwd to NGoal
+  // up back lift
+  // go back
+  // turn to WP Goal
+  // lift WP goal out of zone
+  // Go back, align to tall NGoal
+  // turn to NGoal
+  // Let go of goal on back
+  // Take Ngoal into zone
+  leftMGLift.spin(directionType::fwd);
+  rightMGLift.spin(directionType::fwd);
+  wait(3, sec);
+  leftMGLift.stop();
+  rightMGLift.stop();
 }
 
 /*---------------------------------------------------------------------------*/
@@ -65,18 +51,23 @@ void autonomous(void) {
 
 void usercontrol(void) {
   // User control code here, inside the loop
+  int fwd, trn;
+  int leftPwr, rightPwr;
   while (1) {
-    // This is the main execution loop for the user control program.
-    // Each time through the loop your program should update motor + servo
-    // values based on feedback from the joysticks.
+    //origial code
+    fwd = filter(mainControl.Axis3.position()) * DRIVE_WEIGHT;
+    trn = filter(mainControl.Axis1.position()) * TURN_WEIGHT;
+    leftPwr = (fwd + trn);
+    rightPwr = (fwd - trn);
+  
 
-    // ........................................................................
-    // Insert user code here. This is where you use the joystick values to
-    // update your motors, etc.
-    // ........................................................................
+    FrontLeftMotor.spin(vex::directionType::fwd, leftPwr, vex::velocityUnits::pct);
+    FrontRightMotor.spin(vex::directionType::fwd, rightPwr, vex::velocityUnits::pct);
+    BackLeftMotor.spin(vex::directionType::fwd, leftPwr, vex::velocityUnits::pct);
+    BackRightMotor.spin(vex::directionType::fwd, rightPwr, vex::velocityUnits::pct);
 
-    wait(20, msec); // Sleep the task for a short amount of time to
-                    // prevent wasted resources.
+    vex::task::sleep(20); //Sleep to save resources :)
+
   }
 }
 

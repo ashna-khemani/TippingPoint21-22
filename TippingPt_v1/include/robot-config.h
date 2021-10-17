@@ -12,6 +12,10 @@ extern motor BackLeftMotor;
 extern motor BackRightMotor;
 extern motor FrontLeftMotor;
 extern motor FrontRightMotor;
+
+extern motor leftMGLift;
+extern motor rightMGLift;
+
 extern controller mainControl;
 extern controller secondCtrl;
 extern vex::inertial InertialSensor;

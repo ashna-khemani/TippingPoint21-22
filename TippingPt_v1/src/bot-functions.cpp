@@ -2,7 +2,7 @@
 #include "bot-functions.h"
 
 
-// hey XD if you need to put more ints here do 'extern int IDK LOL;' in bot-functions.h
+// hey XD if you need to put more ints here do 'extern int IDK LOL;' in bot-functions.h -- declare them using 'extern' in header file
 
 
 void setDrivetoBrake(void){
