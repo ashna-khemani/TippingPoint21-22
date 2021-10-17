@@ -1,5 +1,7 @@
-#include "vex.h"
-#include "bot-functions.h"
+# include "vex.h"
+# include "bot-functions.h"
+# include "auton-functions.h"
+
 using namespace vex;
 competition Competition;
 
@@ -59,7 +61,7 @@ void usercontrol(void) {
     trn = filter(mainControl.Axis1.position()) * TURN_WEIGHT;
     leftPwr = (fwd + trn);
     rightPwr = (fwd - trn);
-  
+
 
     FrontLeftMotor.spin(vex::directionType::fwd, leftPwr, vex::velocityUnits::pct);
     FrontRightMotor.spin(vex::directionType::fwd, rightPwr, vex::velocityUnits::pct);
