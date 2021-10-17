@@ -6,6 +6,36 @@ using namespace vex;
 competition Competition;
 
 
+// Auton Menu Setup
+int MenuItemSelected = 0;
+int MenuItemHighlighted = 1;
+
+enum Sides{
+  RED, BLUE
+};
+
+enum MenuItems{
+  ITEM_NOT_USED,
+  NO_ACTION,
+  MENU_LENGTH,
+};
+
+char MenuList[MENU_LENGTH][20] = {
+  "",                   //0 ITEM_NOT_USED
+  "No Action",           // NO_ACTION
+};
+
+void MenuDown(void){
+  MenuItemHighlighted++;
+  if(MenuItemHighlighted > (MENU_LENGTH - 1)){
+    MenuItemHighlighted = 1;
+  }
+}
+
+void MenuSelect(void){
+  MenuItemSelected = 1;
+}
+
 // //Filter function for driving ---------
 int filter (int value) {
   if (abs(value) > 16) {
@@ -19,8 +49,35 @@ void pre_auton(void) {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
 
-  // All activities that occur before the competition starts
-  // Example: clearing encoders, setting servo positions, ...
+  // Select Auton from Menu
+  Brain.Screen.setFont(fontType::mono20);
+
+  mainControl.ButtonDown.pressed(MenuDown);
+  mainControl.ButtonRight.pressed(MenuSelect);
+  while (!MenuItemSelected){  // Allow for selection while program is not selected
+    mainControl.Screen.clearScreen();
+    mainControl.Screen.setCursor(1, 1);
+    mainControl.Screen.print("%s", MenuList[MenuItemHighlighted]);
+  }
+  mainControl.Screen.setCursor(2, 1); // Show selected program once prog has been selected
+  mainControl.Screen.print("%s selected", MenuList[MenuItemHighlighted]);
+
+  // Drive buttons
+
+  // Inertial Sensor setup
+  int limitLoop = 0;
+  InertialSensor.calibrate();
+  while (InertialSensor.isCalibrating() && (limitLoop < 25)) {  // Wait for sensor to finish; timeout if taking too long
+    limitLoop++;
+    wait(100, msec);
+  }
+  if (limitLoop == 25) {  // Print error message if taking too long to calibrate
+    mainControl.Screen.setCursor(1, 1);
+    mainControl.Screen.print("ERR: Inertial Timeout");
+  }
+  InertialSensor.resetRotation();
+  InertialSensor.resetHeading();
+  // InertialSensor.setHeading(315, deg); // Set starting heading to 315
 }
 
 void autonomous(void) {
