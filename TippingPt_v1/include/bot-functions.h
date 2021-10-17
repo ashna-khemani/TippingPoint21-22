@@ -26,3 +26,5 @@ void setLiftBrake(vex::brakeType brakeVal);
 void liftUpDrive(void);
 void liftDownDrive(void);
 
+void liftUp(double degrees);
+void liftDown(double degrees);

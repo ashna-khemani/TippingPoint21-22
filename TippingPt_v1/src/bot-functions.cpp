@@ -260,5 +260,10 @@ void liftDownDrive(){
 
 void liftUp(double degrees){
   LeftMGLift.rotateFor(degrees, rotationUnits::deg, 85, velocityUnits::pct, false);
+  RightMGLift.rotateFor(degrees, rotationUnits::deg, 85, velocityUnits::pct, true);
 }
 
+void liftDown(double degrees){
+  LeftMGLift.rotateFor(-degrees, rotationUnits::deg, 85, velocityUnits::pct, false);
+  RightMGLift.rotateFor(-degrees, rotationUnits::deg, 85, velocityUnits::pct, true);
+}
