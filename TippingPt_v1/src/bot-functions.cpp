@@ -228,3 +228,37 @@ void alignToHeading(float targetHeading){
 
 
 
+// MoGo Lift Functions  // TODO chuck these into main preauton and header
+void setLiftBrake(vex::brakeType brakeVal){ //TODO: put this in main
+  LeftMGLift.setBrake(brakeVal);
+  RightMGLift.setBrake(brakeVal);
+}
+
+bool LiftRunning = false;
+
+void liftUpDrive(){
+  if(!LiftRunning){
+    LeftMGLift.spin(directionType::fwd);
+    RightMGLift.spin(directionType::fwd);
+  }
+  else{
+    LeftMGLift.stop();
+    RightMGLift.stop();
+  }
+}
+
+void liftDownDrive(){
+  if(!LiftRunning){
+    LeftMGLift.spin(directionType::rev);
+    RightMGLift.spin(directionType::rev);
+  }
+  else{
+    LeftMGLift.stop();
+    RightMGLift.stop();
+  }
+}
+
+void liftUp(double degrees){
+  LeftMGLift.rotateFor(degrees, rotationUnits::deg, 85, velocityUnits::pct, false);
+}
+

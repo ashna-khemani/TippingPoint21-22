@@ -63,7 +63,9 @@ void pre_auton(void) {
   mainControl.Screen.print("%s selected", MenuList[MenuItemHighlighted]);
 
   // Drive buttons
-
+  mainControl.ButtonR1.pressed(liftUpDrive);
+  mainControl.ButtonR2.pressed(liftDownDrive);
+  
   // Inertial Sensor setup
   int limitLoop = 0;
   InertialSensor.calibrate();
@@ -91,11 +93,11 @@ void autonomous(void) {
   // turn to NGoal
   // Let go of goal on back
   // Take Ngoal into zone
-  leftMGLift.spin(directionType::fwd);
-  rightMGLift.spin(directionType::fwd);
+  LeftMGLift.spin(directionType::fwd);
+  RightMGLift.spin(directionType::fwd);
   wait(3, sec);
-  leftMGLift.stop();
-  rightMGLift.stop();
+  LeftMGLift.stop();
+  RightMGLift.stop();
 }
 
 /*---------------------------------------------------------------------------*/

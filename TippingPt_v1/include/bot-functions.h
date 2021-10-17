@@ -8,18 +8,21 @@
 #define TURN_WEIGHT     0.75  // Reduce turning sensitivity when driving. Forward/backward are not affected //april 11 was .6
 #define DRIVE_WEIGHT    0.9  // Reduce driving sensitivity when driving. Forward/backward are not affected ap 11 .9
 
-
+// Drive function declarations
 void setDrivetoBrakeType(vex::brakeType brakeValue);
 void goFwd(float distance, float velocity);
 void slideFwd(float distance, float velocity);
 void slideFwdNonBlock(float distance, float velocity);
 void slideBackNonBlock(float distance, float velocity);
 void setDrivetoBrake(void);
-
 void stopDriveTrain(void);
 void turnLeft(float degree);
-
 void turnRight(float degree);
-
 void alignToHeading(float targetHeading);
 void drivePI(double targetDistance);
+
+// Lift functions declarations
+void setLiftBrake(vex::brakeType brakeVal);
+void liftUpDrive(void);
+void liftDownDrive(void);
+

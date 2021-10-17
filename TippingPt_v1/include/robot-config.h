@@ -13,8 +13,8 @@ extern motor BackRightMotor;
 extern motor FrontLeftMotor;
 extern motor FrontRightMotor;
 
-extern motor leftMGLift;
-extern motor rightMGLift;
+extern motor LeftMGLift;
+extern motor RightMGLift;
 
 extern controller mainControl;
 extern controller secondCtrl;

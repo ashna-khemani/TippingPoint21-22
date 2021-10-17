@@ -13,8 +13,8 @@ motor BackRightMotor = motor(PORT2, ratio18_1, true);
 motor FrontLeftMotor = motor(PORT13, ratio18_1, false);
 motor FrontRightMotor = motor(PORT16, ratio18_1, true);
 
-motor leftMGLift = motor(PORT10, ratio18_1, false);
-motor rightMGLift = motor(PORT4, ratio18_1, true);
+motor LeftMGLift = motor(PORT10, ratio18_1, false);
+motor RightMGLift = motor(PORT4, ratio18_1, true);
 
 controller mainControl = controller(primary);
 controller secondCtrl = controller(partner);
