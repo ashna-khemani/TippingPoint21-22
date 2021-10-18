@@ -8,20 +8,20 @@ competition Competition;
 
 // Auton Menu Setup
 int MenuItemSelected = 0;
-int MenuItemHighlighted = 1;
+int MenuItemHighlighted = 0;  // originally 1
 
 enum Sides{
   RED, BLUE
 };
 
 enum MenuItems{
-  ITEM_NOT_USED,
+  //ITEM_NOT_USED,
   NO_ACTION,
   MENU_LENGTH,
 };
 
 char MenuList[MENU_LENGTH][20] = {
-  "",                   //0 ITEM_NOT_USED
+  //"",                   //0 ITEM_NOT_USED
   "No Action",           // NO_ACTION
 };
 
@@ -65,7 +65,7 @@ void pre_auton(void) {
   // Drive buttons
   mainControl.ButtonR1.pressed(liftUpDrive);
   mainControl.ButtonR2.pressed(liftDownDrive);
-  
+
   // Inertial Sensor setup
   int limitLoop = 0;
   InertialSensor.calibrate();
@@ -83,21 +83,18 @@ void pre_auton(void) {
 }
 
 void autonomous(void) {
-  // deploy back lift
-  // zoom fwd to NGoal
-  // up back lift
-  // go back
-  // turn to WP Goal
-  // lift WP goal out of zone
-  // Go back, align to tall NGoal
-  // turn to NGoal
-  // Let go of goal on back
-  // Take Ngoal into zone
-  LeftMGLift.spin(directionType::fwd);
-  RightMGLift.spin(directionType::fwd);
-  wait(3, sec);
-  LeftMGLift.stop();
-  RightMGLift.stop();
+  // Deploy
+  switch(MenuItemHighlighted){
+    /*case THING_FROM MenuItems:
+      autonFunctionName();
+      break;
+    case ....
+    */
+    case NO_ACTION:
+      vex::task::sleep(10000);
+    
+
+  }
 }
 
 /*---------------------------------------------------------------------------*/
