@@ -28,3 +28,9 @@ void frontLiftDownDrive(void);
 
 void frontLiftUp(double degrees);
 void frontLiftDown(double degrees);
+
+void backLiftUpDrive(void);
+void backLiftDownDrive(void);
+
+void backLiftUp(double degrees);
+void backLiftDown(double degrees);

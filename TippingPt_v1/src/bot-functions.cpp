@@ -208,10 +208,12 @@ void frontLiftUpDrive(){
   if(!FrontLiftRunning){
     LeftFrontLift.spin(directionType::fwd);
     RightFrontLift.spin(directionType::fwd);
+    FrontLiftRunning = true;
   }
   else{
     LeftFrontLift.stop();
     RightFrontLift.stop();
+    FrontLiftRunning = false;
   }
 }
 
@@ -219,10 +221,12 @@ void frontLiftDownDrive(){
   if(!FrontLiftRunning){
     LeftFrontLift.spin(directionType::rev);
     RightFrontLift.spin(directionType::rev);
+    FrontLiftRunning = true;
   }
   else{
     LeftFrontLift.stop();
     RightFrontLift.stop();
+    FrontLiftRunning = false;
   }
 }
 
@@ -249,10 +253,12 @@ void backLiftUpDrive(){
   if(!BackLiftRunning){
     LeftBackLift.spin(directionType::fwd);
     RightBackLift.spin(directionType::fwd);
+    BackLiftRunning = true;
   }
   else{
     LeftBackLift.stop();
     RightBackLift.stop();
+    BackLiftRunning = false;
   }
 }
 
@@ -260,10 +266,12 @@ void backLiftDownDrive(){
   if(!BackLiftRunning){
     LeftBackLift.spin(directionType::rev);
     RightBackLift.spin(directionType::rev);
+    BackLiftRunning = true;
   }
   else{
     LeftBackLift.stop();
     RightBackLift.stop();
+    BackLiftRunning = false;
   }
 }
 

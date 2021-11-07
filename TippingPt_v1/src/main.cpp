@@ -65,6 +65,8 @@ void pre_auton(void) {
   // Drive buttons
   mainControl.ButtonR1.pressed(frontLiftUpDrive);
   mainControl.ButtonR2.pressed(frontLiftDownDrive);
+  mainControl.ButtonL1.pressed(backLiftUpDrive);
+  mainControl.ButtonL2.pressed(backLiftDownDrive);
 
   // Inertial Sensor setup
   int limitLoop = 0;
