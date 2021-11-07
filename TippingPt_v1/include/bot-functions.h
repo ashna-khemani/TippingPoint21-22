@@ -22,9 +22,9 @@ void alignToHeading(float targetHeading);
 void drivePI(double targetDistance);
 
 // Lift functions declarations
-void setLiftBrake(vex::brakeType brakeVal);
-void liftUpDrive(void);
-void liftDownDrive(void);
+void setFrontLiftBrake(vex::brakeType brakeVal);
+void frontLiftUpDrive(void);
+void frontLiftDownDrive(void);
 
-void liftUp(double degrees);
-void liftDown(double degrees);
+void frontLiftUp(double degrees);
+void frontLiftDown(double degrees);

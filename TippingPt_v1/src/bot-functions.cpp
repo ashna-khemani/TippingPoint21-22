@@ -6,35 +6,27 @@
 
 
 void setDrivetoBrake(void){
-    BackLeftMotor.setStopping(vex::brakeType::brake);
-    FrontLeftMotor.setStopping(vex::brakeType::brake);
-    BackRightMotor.setStopping(vex::brakeType::brake);
-    FrontRightMotor.setStopping(vex::brakeType::brake);
+    LeftMotor.setStopping(vex::brakeType::brake);
+    RightMotor.setStopping(vex::brakeType::brake);
 }
 
 void setDrivetoBrakeType(vex::brakeType brakeValue){
-    BackLeftMotor.setStopping(brakeValue);
-    FrontLeftMotor.setStopping(brakeValue);
-    BackRightMotor.setStopping(brakeValue);
-    FrontRightMotor.setStopping(brakeValue);
+    LeftMotor.setStopping(brakeValue);
+    RightMotor.setStopping(brakeValue);
 }
 void goFwd(float distance, float velocity){
     float numberDeg;
     numberDeg = (distance/WHEELCIRCUMFERENCE)*360;
-    BackLeftMotor.rotateFor(numberDeg,rotationUnits::deg,velocity,velocityUnits::pct, false);
-    FrontLeftMotor.rotateFor(numberDeg,rotationUnits::deg,velocity,velocityUnits::pct, false);
-    BackRightMotor.rotateFor(numberDeg,rotationUnits::deg,velocity,velocityUnits::pct, false);
-    FrontRightMotor.rotateFor(numberDeg,rotationUnits::deg,velocity,velocityUnits::pct);
+    LeftMotor.rotateFor(numberDeg,rotationUnits::deg,velocity,velocityUnits::pct, false);
+    RightMotor.rotateFor(numberDeg,rotationUnits::deg,velocity,velocityUnits::pct);
 }
 
 void slideFwd(float distance, float velocity){
     float numberDeg;
     numberDeg = (distance/WHEELCIRCUMFERENCE)*360;
     setDrivetoBrakeType(coast);
-    BackLeftMotor.rotateFor(numberDeg,rotationUnits::deg,velocity,velocityUnits::pct, false);
-    FrontLeftMotor.rotateFor(numberDeg,rotationUnits::deg,velocity,velocityUnits::pct, false);
-    BackRightMotor.rotateFor(numberDeg,rotationUnits::deg,velocity,velocityUnits::pct, false);
-    FrontRightMotor.rotateFor(numberDeg,rotationUnits::deg,velocity,velocityUnits::pct);
+    LeftMotor.rotateFor(numberDeg,rotationUnits::deg,velocity,velocityUnits::pct, false);
+    RightMotor.rotateFor(numberDeg,rotationUnits::deg,velocity,velocityUnits::pct);
     setDrivetoBrakeType(brake);
 }
 
@@ -43,10 +35,8 @@ void slideFwdNonBlock(float distance, float velocity){
     setDrivetoBrakeType(coast);
     float numberDeg;
     numberDeg = (distance/WHEELCIRCUMFERENCE)*360;
-    BackLeftMotor.rotateFor(numberDeg,rotationUnits::deg,velocity,velocityUnits::pct, false);
-    FrontLeftMotor.rotateFor(numberDeg,rotationUnits::deg,velocity,velocityUnits::pct, false);
-    BackRightMotor.rotateFor(numberDeg,rotationUnits::deg,velocity,velocityUnits::pct, false);
-    FrontRightMotor.rotateFor(numberDeg,rotationUnits::deg,velocity,velocityUnits::pct, false);
+    LeftMotor.rotateFor(numberDeg,rotationUnits::deg,velocity,velocityUnits::pct, false);
+    RightMotor.rotateFor(numberDeg,rotationUnits::deg,velocity,velocityUnits::pct, false);
     setDrivetoBrakeType(brake);
 }
 
@@ -55,10 +45,8 @@ void slideBackNonBlock(float distance, float velocity){
     setDrivetoBrakeType(coast);
     float numberDeg;
     numberDeg = (distance/WHEELCIRCUMFERENCE)*360;
-    BackLeftMotor.rotateFor(directionType:: rev, numberDeg,rotationUnits::deg,velocity,velocityUnits::pct, false);
-    FrontLeftMotor.rotateFor(directionType:: rev, numberDeg,rotationUnits::deg,velocity,velocityUnits::pct, false);
-    BackRightMotor.rotateFor(directionType:: rev, numberDeg,rotationUnits::deg,velocity,velocityUnits::pct, false);
-    FrontRightMotor.rotateFor(directionType:: rev, numberDeg,rotationUnits::deg,velocity,velocityUnits::pct, false);
+    LeftMotor.rotateFor(directionType:: rev, numberDeg,rotationUnits::deg,velocity,velocityUnits::pct, false);
+    RightMotor.rotateFor(directionType:: rev, numberDeg,rotationUnits::deg,velocity,velocityUnits::pct, false);
     setDrivetoBrakeType(brake);
 }
 
@@ -66,10 +54,8 @@ void goBack(float distance, float velocity){
     float numberDeg;
     numberDeg = (distance/WHEELCIRCUMFERENCE)*360;
 
-    BackLeftMotor.rotateFor(directionType:: rev, numberDeg,rotationUnits::deg,velocity,velocityUnits::pct, false);
-    FrontLeftMotor.rotateFor(directionType:: rev, numberDeg,rotationUnits::deg,velocity,velocityUnits::pct, false);
-    FrontRightMotor.rotateFor(directionType:: rev, numberDeg,rotationUnits::deg,velocity,velocityUnits::pct, false);
-    BackRightMotor.rotateFor(directionType:: rev, numberDeg,rotationUnits::deg,velocity,velocityUnits::pct);
+    LeftMotor.rotateFor(directionType:: rev, numberDeg,rotationUnits::deg,velocity,velocityUnits::pct, false);
+    RightMotor.rotateFor(directionType:: rev, numberDeg,rotationUnits::deg,velocity,velocityUnits::pct, false);
 }
 
 void drivePI(double targetDistance) {
@@ -81,12 +67,12 @@ void drivePI(double targetDistance) {
   bool timerExpired = false;
   timer errorTimer = timer();
   errorTimer.clear();
-  FrontRightMotor.resetRotation(); // used front right motor to control driving distance
-  FrontLeftMotor.resetRotation();
+  RightMotor.resetRotation(); // used front right motor to control driving distance
+  LeftMotor.resetRotation();
 
   while ((fabs(error) > maxAllowedError) && (timerExpired == false)) {
-    currentDistance = ((FrontRightMotor.rotation(rotationUnits::deg) +
-                        FrontLeftMotor.rotation(rotationUnits::deg)) /
+    currentDistance = ((RightMotor.rotation(rotationUnits::deg) +
+                        LeftMotor.rotation(rotationUnits::deg)) /
                        2 / 360) *
                       WHEELCIRCUMFERENCE;
     error = targetDistance - currentDistance;
@@ -96,13 +82,11 @@ void drivePI(double targetDistance) {
     //at a given time IN EQUAL INTERVALS)??
     motorspeed = (error * kP) + (errorSum * kI) + (deltaE * kD);
 
-    BackLeftMotor.spin(directionType::fwd, motorspeed, velocityUnits::pct);
-    FrontLeftMotor.spin(directionType::fwd, motorspeed, velocityUnits::pct);
-    FrontRightMotor.spin(directionType::fwd, motorspeed, velocityUnits::pct);
-    BackRightMotor.spin(directionType::fwd, motorspeed, velocityUnits::pct);
+    LeftMotor.spin(directionType::fwd, motorspeed, velocityUnits::pct);
+    RightMotor.spin(directionType::fwd, motorspeed, velocityUnits::pct);
 
     lastError = error;
-    
+
     if (fabs(error) > maxAllowedError) {
       errorTimer.clear();
     } else {
@@ -112,56 +96,44 @@ void drivePI(double targetDistance) {
     }
     vex::task::sleep(20);
   }
-  BackLeftMotor.stop(brake);
-  FrontLeftMotor.stop(brake);
-  FrontRightMotor.stop(brake);
-  BackRightMotor.stop(brake);
+  LeftMotor.stop(brake);
+  RightMotor.stop(brake);
 }
 
 void stopDriveTrain(void) {
-  BackLeftMotor.stop();
-  FrontLeftMotor.stop();
-  FrontRightMotor.stop();
-  BackRightMotor.stop();
+  LeftMotor.stop();
+  RightMotor.stop();
 }
 
 void turnLeft(float degree){
     float numberOfRevs = degree * REVTOANGLELEFT;
     setDrivetoBrakeType(hold);
-    BackLeftMotor.rotateFor(directionType::rev, numberOfRevs,rotationUnits::rev,TURNING_SPEED,velocityUnits::pct, false);
-    FrontLeftMotor.rotateFor(directionType::rev, numberOfRevs,rotationUnits::rev,TURNING_SPEED,velocityUnits::pct, false);
-    FrontRightMotor.rotateFor(numberOfRevs,rotationUnits::rev,TURNING_SPEED,velocityUnits::pct, false);
-    BackRightMotor.rotateFor(numberOfRevs,rotationUnits::rev,TURNING_SPEED,velocityUnits::pct);
+    LeftMotor.rotateFor(directionType::rev, numberOfRevs,rotationUnits::rev,TURNING_SPEED,velocityUnits::pct, false);
+    RightMotor.rotateFor(numberOfRevs,rotationUnits::rev,TURNING_SPEED,velocityUnits::pct, false);
     setDrivetoBrakeType(brake);
 }
 
 void turnLeftSlow(float degree){
     float numberOfRevs = degree * REVTOANGLELEFT;
     setDrivetoBrakeType(hold);
-    BackLeftMotor.rotateFor(directionType::rev, numberOfRevs,rotationUnits::rev,TURNING_SPEED/2,velocityUnits::pct, false);
-    FrontLeftMotor.rotateFor(directionType::rev, numberOfRevs,rotationUnits::rev,TURNING_SPEED/2,velocityUnits::pct, false);
-    FrontRightMotor.rotateFor(numberOfRevs,rotationUnits::rev,TURNING_SPEED/2,velocityUnits::pct, false);
-    BackRightMotor.rotateFor(numberOfRevs,rotationUnits::rev,TURNING_SPEED/2,velocityUnits::pct);
+    LeftMotor.rotateFor(directionType::rev, numberOfRevs,rotationUnits::rev,TURNING_SPEED/2,velocityUnits::pct, false);
+    RightMotor.rotateFor(numberOfRevs,rotationUnits::rev,TURNING_SPEED/2,velocityUnits::pct, false);
     setDrivetoBrakeType(brake);
 }
 
 void turnLeftSlowSpeed(float degree, int speedRatio){
     float numberOfRevs = degree * REVTOANGLELEFT;
 //    setDrivetoBrakeType(hold);
-    BackLeftMotor.rotateFor(directionType::rev, numberOfRevs,rotationUnits::rev,TURNING_SPEED/(1+speedRatio),velocityUnits::pct, false);
-    FrontLeftMotor.rotateFor(directionType::rev, numberOfRevs,rotationUnits::rev,TURNING_SPEED/(1+speedRatio),velocityUnits::pct, false);
-    FrontRightMotor.rotateFor(numberOfRevs,rotationUnits::rev,TURNING_SPEED/(1+speedRatio),velocityUnits::pct, false);
-    BackRightMotor.rotateFor(numberOfRevs,rotationUnits::rev,TURNING_SPEED/(1+speedRatio),velocityUnits::pct);
+    LeftMotor.rotateFor(directionType::rev, numberOfRevs,rotationUnits::rev,TURNING_SPEED/(1+speedRatio),velocityUnits::pct, false);
+    RightMotor.rotateFor(numberOfRevs,rotationUnits::rev,TURNING_SPEED/(1+speedRatio),velocityUnits::pct, false);
 //    setDrivetoBrakeType(brake);
 }
 
 void turnRight(float degree){
     float numberRev = degree * REVTOANGLERIGHT;
     setDrivetoBrakeType(hold);
-    BackLeftMotor.rotateFor(numberRev,rotationUnits::rev,TURNING_SPEED,velocityUnits::pct, false);
-    FrontLeftMotor.rotateFor(numberRev,rotationUnits::rev,TURNING_SPEED,velocityUnits::pct, false);
-    FrontRightMotor.rotateFor(directionType::rev, numberRev,rotationUnits::rev,TURNING_SPEED,velocityUnits::pct, false);
-    BackRightMotor.rotateFor(directionType::rev, numberRev,rotationUnits::rev,TURNING_SPEED,velocityUnits::pct);
+    LeftMotor.rotateFor(numberRev,rotationUnits::rev,TURNING_SPEED,velocityUnits::pct, false);
+    RightMotor.rotateFor(directionType::rev, numberRev,rotationUnits::rev,TURNING_SPEED,velocityUnits::pct, false);
     setDrivetoBrakeType(brake);
 
 }
@@ -170,10 +142,8 @@ void turnRight(float degree){
 void turnRightSlow(float degree){
     float numberRev = degree * REVTOANGLERIGHT;
     setDrivetoBrakeType(hold);
-    BackLeftMotor.rotateFor(numberRev,rotationUnits::rev,TURNING_SPEED/2,velocityUnits::pct, false);
-    FrontLeftMotor.rotateFor(numberRev,rotationUnits::rev,TURNING_SPEED/2,velocityUnits::pct, false);
-    FrontRightMotor.rotateFor(directionType::rev, numberRev,rotationUnits::rev,TURNING_SPEED/2,velocityUnits::pct, false);
-    BackRightMotor.rotateFor(directionType::rev, numberRev,rotationUnits::rev,TURNING_SPEED/2,velocityUnits::pct);
+    LeftMotor.rotateFor(numberRev,rotationUnits::rev,TURNING_SPEED/2,velocityUnits::pct, false);
+    RightMotor.rotateFor(directionType::rev, numberRev,rotationUnits::rev,TURNING_SPEED/2,velocityUnits::pct, false);
     setDrivetoBrakeType(brake);
 
 }
@@ -181,10 +151,8 @@ void turnRightSlow(float degree){
 void turnRightSlowSpeed(float degree, int speedRatio){
     float numberRev = degree * REVTOANGLERIGHT;
   //  setDrivetoBrakeType(hold);
-    BackLeftMotor.rotateFor(numberRev,rotationUnits::rev,TURNING_SPEED/(1+speedRatio),velocityUnits::pct, false);
-    FrontLeftMotor.rotateFor(numberRev,rotationUnits::rev,TURNING_SPEED/(1+speedRatio),velocityUnits::pct, false);
-    FrontRightMotor.rotateFor(directionType::rev, numberRev,rotationUnits::rev,TURNING_SPEED/(1+speedRatio),velocityUnits::pct, false);
-    BackRightMotor.rotateFor(directionType::rev, numberRev,rotationUnits::rev,TURNING_SPEED/(1+speedRatio),velocityUnits::pct);
+    LeftMotor.rotateFor(numberRev,rotationUnits::rev,TURNING_SPEED/(1+speedRatio),velocityUnits::pct, false);
+    RightMotor.rotateFor(directionType::rev, numberRev,rotationUnits::rev,TURNING_SPEED/(1+speedRatio),velocityUnits::pct, false);
   //  setDrivetoBrakeType(brake);
 }
 
@@ -228,42 +196,83 @@ void alignToHeading(float targetHeading){
 
 
 
-// MoGo Lift Functions  // TODO chuck these into main preauton and header
-void setLiftBrake(vex::brakeType brakeVal){ //TODO: put this in main
-  LeftMGLift.setBrake(brakeVal);
-  RightMGLift.setBrake(brakeVal);
+// Front MoGo Lift Functions  // TODO chuck these into main preauton and header
+void setFrontLiftBrake(vex::brakeType brakeVal){ //TODO: put this in main
+  LeftFrontLift.setBrake(brakeVal);
+  RightFrontLift.setBrake(brakeVal);
 }
 
-bool LiftRunning = false;
+bool FrontLiftRunning = false;
 
-void liftUpDrive(){
-  if(!LiftRunning){
-    LeftMGLift.spin(directionType::fwd);
-    RightMGLift.spin(directionType::fwd);
+void frontLiftUpDrive(){
+  if(!FrontLiftRunning){
+    LeftFrontLift.spin(directionType::fwd);
+    RightFrontLift.spin(directionType::fwd);
   }
   else{
-    LeftMGLift.stop();
-    RightMGLift.stop();
+    LeftFrontLift.stop();
+    RightFrontLift.stop();
   }
 }
 
-void liftDownDrive(){
-  if(!LiftRunning){
-    LeftMGLift.spin(directionType::rev);
-    RightMGLift.spin(directionType::rev);
+void frontLiftDownDrive(){
+  if(!FrontLiftRunning){
+    LeftFrontLift.spin(directionType::rev);
+    RightFrontLift.spin(directionType::rev);
   }
   else{
-    LeftMGLift.stop();
-    RightMGLift.stop();
+    LeftFrontLift.stop();
+    RightFrontLift.stop();
   }
 }
 
-void liftUp(double degrees){
-  LeftMGLift.rotateFor(degrees, rotationUnits::deg, 85, velocityUnits::pct, false);
-  RightMGLift.rotateFor(degrees, rotationUnits::deg, 85, velocityUnits::pct, true);
+void frontLiftUp(double degrees){
+  LeftFrontLift.rotateFor(degrees, rotationUnits::deg, 85, velocityUnits::pct, false);
+  RightFrontLift.rotateFor(degrees, rotationUnits::deg, 85, velocityUnits::pct, true);
 }
 
-void liftDown(double degrees){
-  LeftMGLift.rotateFor(-degrees, rotationUnits::deg, 85, velocityUnits::pct, false);
-  RightMGLift.rotateFor(-degrees, rotationUnits::deg, 85, velocityUnits::pct, true);
+void frontLiftDown(double degrees){
+  LeftFrontLift.rotateFor(-degrees, rotationUnits::deg, 85, velocityUnits::pct, false);
+  RightFrontLift.rotateFor(-degrees, rotationUnits::deg, 85, velocityUnits::pct, true);
+}
+
+
+// ------Back MoGo Lift Functions  // TODO chuck these into main preauton and header
+void setBackLiftBrake(vex::brakeType brakeVal){ //TODO: put this in main
+  LeftBackLift.setBrake(brakeVal);
+  RightBackLift.setBrake(brakeVal);
+}
+
+bool BackLiftRunning = false;
+
+void backLiftUpDrive(){
+  if(!BackLiftRunning){
+    LeftBackLift.spin(directionType::fwd);
+    RightBackLift.spin(directionType::fwd);
+  }
+  else{
+    LeftBackLift.stop();
+    RightBackLift.stop();
+  }
+}
+
+void backLiftDownDrive(){
+  if(!BackLiftRunning){
+    LeftBackLift.spin(directionType::rev);
+    RightBackLift.spin(directionType::rev);
+  }
+  else{
+    LeftBackLift.stop();
+    RightBackLift.stop();
+  }
+}
+
+void backLiftUp(double degrees){
+  LeftBackLift.rotateFor(degrees, rotationUnits::deg, 85, velocityUnits::pct, false);
+  RightBackLift.rotateFor(degrees, rotationUnits::deg, 85, velocityUnits::pct, true);
+}
+
+void backLiftDown(double degrees){
+  LeftBackLift.rotateFor(-degrees, rotationUnits::deg, 85, velocityUnits::pct, false);
+  RightBackLift.rotateFor(-degrees, rotationUnits::deg, 85, velocityUnits::pct, true);
 }

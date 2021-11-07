@@ -63,8 +63,8 @@ void pre_auton(void) {
   mainControl.Screen.print("%s selected", MenuList[MenuItemHighlighted]);
 
   // Drive buttons
-  mainControl.ButtonR1.pressed(liftUpDrive);
-  mainControl.ButtonR2.pressed(liftDownDrive);
+  mainControl.ButtonR1.pressed(frontLiftUpDrive);
+  mainControl.ButtonR2.pressed(frontLiftDownDrive);
 
   // Inertial Sensor setup
   int limitLoop = 0;
@@ -119,10 +119,9 @@ void usercontrol(void) {
     rightPwr = (fwd - trn);
 
 
-    FrontLeftMotor.spin(vex::directionType::fwd, leftPwr, vex::velocityUnits::pct);
-    FrontRightMotor.spin(vex::directionType::fwd, rightPwr, vex::velocityUnits::pct);
-    BackLeftMotor.spin(vex::directionType::fwd, leftPwr, vex::velocityUnits::pct);
-    BackRightMotor.spin(vex::directionType::fwd, rightPwr, vex::velocityUnits::pct);
+    LeftMotor.spin(vex::directionType::fwd, leftPwr, vex::velocityUnits::pct);
+    RightMotor.spin(vex::directionType::fwd, rightPwr, vex::velocityUnits::pct);
+
 
     vex::task::sleep(20); //Sleep to save resources :)
 
