@@ -16,7 +16,7 @@ motor BackRightMotor = motor(PORT16, ratio18_1, true);
 motor LeftFrontLift = motor(PORT10, ratio18_1, false);
 motor RightFrontLift = motor(PORT6, ratio18_1, true);
 
-motor BackLift = motor(PORT12, ratio18_1, true);
+motor BackLift = motor(PORT12, ratio18_1, false);
 
 controller mainControl = controller(primary);
 controller secondCtrl = controller(partner);
