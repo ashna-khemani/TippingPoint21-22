@@ -111,6 +111,8 @@ void autonomous(void) {
 
 void usercontrol(void) {
   // User control code here, inside the loop
+  setBackLiftBrake(hold);
+  setFrontLiftBrake(hold);
   int fwd, trn;
   int leftPwr, rightPwr;
   while (1) {
