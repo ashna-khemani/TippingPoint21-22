@@ -8,21 +8,21 @@ using code = vision::code;
 brain  Brain;
 
 // VEXcode device constructors
-motor LeftMotor = motor(PORT11, ratio18_1, false);
-motor RightMotor = motor(PORT4, ratio18_1, true);
-
+motor FrontLeftMotor = motor(PORT11, ratio18_1, false);
+motor FrontRightMotor = motor(PORT4, ratio18_1, true);
+motor BackLeftMotor = motor(PORT2, ratio18_1, false);
+motor BackRightMotor = motor(PORT16, ratio18_1, true);
 
 motor LeftFrontLift = motor(PORT10, ratio18_1, false);
 motor RightFrontLift = motor(PORT6, ratio18_1, true);
 
-motor LeftBackLift = motor(PORT12, ratio18_1, true);
-motor RightBackLift = motor(PORT13, ratio18_1, false);
+motor BackLift = motor(PORT12, ratio18_1, true);
 
 controller mainControl = controller(primary);
 controller secondCtrl = controller(partner);
 vex::inertial InertialSensor = vex::inertial(vex::PORT10);
-motor_group leftDrive = motor_group( LeftMotor );
-motor_group rightDrive = motor_group( RightMotor );
+motor_group leftDrive = motor_group( FrontLeftMotor, BackLeftMotor );
+motor_group rightDrive = motor_group( FrontRightMotor, BackRightMotor );
 // define the drivetrain
 // this one is a smart drive which uses the InertinalSensor
 // gyro and all motors were defined using graphical config

@@ -8,14 +8,16 @@ using code = vision::code;
 extern brain  Brain;
 
 // VEXcode device constructors
-extern motor LeftMotor;
-extern motor RightMotor;
+
+extern motor BackLeftMotor; 
+extern motor BackRightMotor;
+extern motor FrontLeftMotor;
+extern motor FrontRightMotor;
 
 extern motor LeftFrontLift;
 extern motor RightFrontLift;
 
-extern motor LeftBackLift;
-extern motor RightBackLift;
+extern motor BackLift;
 
 extern controller mainControl;
 extern controller secondCtrl;

@@ -111,8 +111,6 @@ void autonomous(void) {
 
 void usercontrol(void) {
   // User control code here, inside the loop
-  setBackLiftBrake(hold);
-  setFrontLiftBrake(hold);
   int fwd, trn;
   int leftPwr, rightPwr;
   while (1) {
@@ -123,9 +121,10 @@ void usercontrol(void) {
     rightPwr = (fwd - trn);
 
 
-    LeftMotor.spin(vex::directionType::fwd, leftPwr, vex::velocityUnits::pct);
-    RightMotor.spin(vex::directionType::fwd, rightPwr, vex::velocityUnits::pct);
-
+    FrontLeftMotor.spin(vex::directionType::fwd, leftPwr, vex::velocityUnits::pct);
+    FrontRightMotor.spin(vex::directionType::fwd, rightPwr, vex::velocityUnits::pct);
+    BackLeftMotor.spin(vex::directionType::fwd, leftPwr, vex::velocityUnits::pct);
+    BackRightMotor.spin(vex::directionType::fwd, rightPwr, vex::velocityUnits::pct);
 
     vex::task::sleep(20); //Sleep to save resources :)
 
