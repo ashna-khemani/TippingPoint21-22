@@ -9,7 +9,7 @@ extern brain  Brain;
 
 // VEXcode device constructors
 
-extern motor BackLeftMotor; 
+extern motor BackLeftMotor;
 extern motor BackRightMotor;
 extern motor FrontLeftMotor;
 extern motor FrontRightMotor;
@@ -18,6 +18,7 @@ extern motor LeftFrontLift;
 extern motor RightFrontLift;
 
 extern motor BackLift;
+extern motor ConveyorBelt;
 
 extern controller mainControl;
 extern controller secondCtrl;
@@ -34,7 +35,7 @@ extern smartdrive    robotDrive;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
- * 
+ *
  * This should be called at the start of your int main function.
  */
 void vexcodeInit( void ) ;

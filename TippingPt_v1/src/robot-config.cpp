@@ -18,6 +18,8 @@ motor RightFrontLift = motor(PORT6, ratio18_1, true);
 
 motor BackLift = motor(PORT12, ratio18_1, false);
 
+motor ConveyorBelt = motor(PORT15, ratio18_1, false);
+
 controller mainControl = controller(primary);
 controller secondCtrl = controller(partner);
 vex::inertial InertialSensor = vex::inertial(vex::PORT10);
@@ -39,7 +41,7 @@ smartdrive    robotDrive = smartdrive( leftDrive, rightDrive, InertialSensor,4*3
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
- * 
+ *
  * This should be called at the start of your int main function.
  */
 void vexcodeInit( void ) {

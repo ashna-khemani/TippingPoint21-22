@@ -102,7 +102,7 @@ void drivePI(double targetDistance) {
     BackRightMotor.spin(directionType::fwd, motorspeed, velocityUnits::pct);
 
     lastError = error;
-    
+
     if (fabs(error) > maxAllowedError) {
       errorTimer.clear();
     } else {
@@ -308,4 +308,37 @@ void backLiftUp(double degrees){
 
 void backLiftDown(double degrees){
   BackLift.rotateFor(-degrees, rotationUnits::deg, 85, velocityUnits::pct, false);
+}
+
+int backLiftStage = 0;
+void backLiftAuto(void){
+  if (backLiftStage == 0) {
+    backLiftAuto_stage1();
+    backLiftStage = 1;
+  }
+  else{
+    backLiftAuto_stage2();
+    backLiftStage = 0;
+  }
+}
+void backLiftAuto_stage1(void) {
+ BackLift.setBrake(brakeType::hold);
+ BackLift.rotateFor(240, rotationUnits::deg,50, velocityUnits::pct, false);
+}
+void backLiftAuto_stage2(void) {
+  BackLift.rotateFor(-240, rotationUnits::deg,-50, velocityUnits::pct, false);
+}
+
+// Conveyor Belt Code
+bool ConveyerRunning = false;
+void conveyerBeltFwd(){
+  if(!ConveyerRunning){
+    ConveyorBelt.spin(directionType::rev);
+    ConveyorBelt.setVelocity(-35, velocityUnits::pct);
+    ConveyerRunning = true;
+  }
+  else{
+    ConveyorBelt.stop();
+    ConveyerRunning = false;
+  }
 }

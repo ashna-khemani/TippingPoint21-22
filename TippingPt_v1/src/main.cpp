@@ -67,6 +67,8 @@ void pre_auton(void) {
   mainControl.ButtonR2.pressed(frontLiftDownDrive);
   mainControl.ButtonL1.pressed(backLiftUpDrive);
   mainControl.ButtonL2.pressed(backLiftDownDrive);
+  mainControl.ButtonA.pressed(backLiftAuto);
+  mainControl.ButtonUp.pressed(conveyerBeltFwd);
 
   // Inertial Sensor setup
   int limitLoop = 0;
@@ -94,7 +96,7 @@ void autonomous(void) {
     */
     case NO_ACTION:
       vex::task::sleep(10000);
-    
+
 
   }
 }
