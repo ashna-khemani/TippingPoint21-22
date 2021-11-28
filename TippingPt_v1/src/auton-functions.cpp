@@ -3,8 +3,21 @@
 # include "auton-functions.h"
 
 // NOTE: Deploy function goes here
+void flipOpen(){
+  // to be made
+}
 
-// Idea:
+void NGoalInFront(){
+  // flip Open
+  goFwd(48, 100);
+  frontLiftUp(30);
+  slideBackNonBlock(36, 100);
+  wait(200, msec);  // Lower goal after 200msec of driving back
+  frontLiftDown(30);
+ 
+}
+
+// Idea: -- Master Plan
   // deploy back lift
   // zoom fwd to NGoal
   // up back lift

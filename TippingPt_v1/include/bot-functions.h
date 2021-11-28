@@ -14,6 +14,7 @@ void goFwd(float distance, float velocity);
 void slideFwd(float distance, float velocity);
 void slideFwdNonBlock(float distance, float velocity);
 void slideBackNonBlock(float distance, float velocity);
+void goBack(float distance, float velocity);
 void setDrivetoBrake(void);
 void stopDriveTrain(void);
 void turnLeft(float degree);

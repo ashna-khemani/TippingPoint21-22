@@ -16,13 +16,16 @@ enum Sides{
 
 enum MenuItems{
   //ITEM_NOT_USED,
+  N_GOAL_IN_FRONT,
   NO_ACTION,
   MENU_LENGTH,
 };
 
 char MenuList[MENU_LENGTH][20] = {
   //"",                   //0 ITEM_NOT_USED
+  "NGoalInFront",
   "No Action",           // NO_ACTION
+  
 };
 
 void MenuDown(void){
@@ -48,6 +51,10 @@ int filter (int value) {
 void pre_auton(void) {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
+
+  // Set to hold so it stays down before deploying
+  RightFrontLift.setBrake(hold);
+  LeftFrontLift.setBrake(hold);
 
   // Select Auton from Menu
   Brain.Screen.setFont(fontType::mono20);
@@ -87,13 +94,17 @@ void pre_auton(void) {
 }
 
 void autonomous(void) {
-  // Deploy
+  // TO DO: add Deploy
   switch(MenuItemHighlighted){
-    /*case THING_FROM MenuItems:
+
+    /*case THING_FROM_MenuItems:
       autonFunctionName();
       break;
     case ....
     */
+    case N_GOAL_IN_FRONT:
+      NGoalInFront();
+      break;
     case NO_ACTION:
       vex::task::sleep(10000);
 
