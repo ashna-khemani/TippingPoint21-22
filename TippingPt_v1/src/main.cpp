@@ -54,13 +54,12 @@ void pre_auton(void) {
 
   // Set to hold so it stays down before deploying
   mainControl.Screen.clearScreen();
-mainControl.Screen.setCursor(1, 1);
+  mainControl.Screen.setCursor(1, 1);
   mainControl.Screen.print("Setting Brake...");
   // setFrontLiftBrake(hold);
-  RightFrontLift.setStopping(hold);
-  LeftFrontLift.setStopping(hold);
+  FrontLift.setStopping(hold);
   mainControl.Screen.print("Brake Set!");
- vex::task::sleep(10000);
+  vex::task::sleep(10000);
 
 
   // Select Auton from Menu
@@ -74,6 +73,7 @@ mainControl.Screen.setCursor(1, 1);
     mainControl.Screen.print("%s", MenuList[MenuItemHighlighted]);
     vex::task::sleep(64);
   }
+  
   mainControl.Screen.setCursor(2, 1); // Show selected program once prog has been selected
   mainControl.Screen.print("%s selected", MenuList[MenuItemHighlighted]);
 

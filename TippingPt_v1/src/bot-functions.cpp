@@ -230,46 +230,39 @@ void alignToHeading(float targetHeading){
 
 // Front MoGo Lift Functions  // TODO chuck these into main preauton and header
 void setFrontLiftBrake(vex::brakeType brakeVal){ //TODO: put this in main
-  LeftFrontLift.setStopping(brakeVal);
-  RightFrontLift.setStopping(brakeVal);
+  FrontLift.setStopping(brakeVal);
 }
 
 bool FrontLiftRunning = false;
 
 void frontLiftUpDrive(){
   if(!FrontLiftRunning){
-    LeftFrontLift.spin(directionType::fwd);
-    RightFrontLift.spin(directionType::fwd);
+    FrontLift.spin(directionType::fwd);
     FrontLiftRunning = true;
   }
   else{
-    LeftFrontLift.stop();
-    RightFrontLift.stop();
+    FrontLift.stop();
     FrontLiftRunning = false;
   }
 }
 
 void frontLiftDownDrive(){
   if(!FrontLiftRunning){
-    LeftFrontLift.spin(directionType::rev);
-    RightFrontLift.spin(directionType::rev);
+    FrontLift.spin(directionType::rev);
     FrontLiftRunning = true;
   }
   else{
-    LeftFrontLift.stop();
-    RightFrontLift.stop();
+    FrontLift.stop();
     FrontLiftRunning = false;
   }
 }
 
 void frontLiftUp(double degrees){
-  LeftFrontLift.rotateFor(degrees*84/32, rotationUnits::deg, 85, velocityUnits::pct, false);
-  RightFrontLift.rotateFor(degrees*84/32, rotationUnits::deg, 85, velocityUnits::pct, true);
+  FrontLift.rotateFor(degrees*84/32, rotationUnits::deg, 85, velocityUnits::pct, false);
 }
 
 void frontLiftDown(double degrees){
-  LeftFrontLift.rotateFor(-degrees*84/32, rotationUnits::deg, 85, velocityUnits::pct, false);
-  RightFrontLift.rotateFor(-degrees*84/32, rotationUnits::deg, 85, velocityUnits::pct, true);
+  FrontLift.rotateFor(-degrees*84/32, rotationUnits::deg, 85, velocityUnits::pct, false);
 }
 
 

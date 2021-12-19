@@ -14,8 +14,7 @@ extern motor BackRightMotor;
 extern motor FrontLeftMotor;
 extern motor FrontRightMotor;
 
-extern motor LeftFrontLift;
-extern motor RightFrontLift;
+extern motor FrontLift;
 
 extern motor BackLift;
 extern motor ConveyorBelt;
