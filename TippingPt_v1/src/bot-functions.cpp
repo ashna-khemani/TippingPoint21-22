@@ -230,8 +230,8 @@ void alignToHeading(float targetHeading){
 
 // Front MoGo Lift Functions  // TODO chuck these into main preauton and header
 void setFrontLiftBrake(vex::brakeType brakeVal){ //TODO: put this in main
-  LeftFrontLift.setBrake(brakeVal);
-  RightFrontLift.setBrake(brakeVal);
+  LeftFrontLift.setStopping(brakeVal);
+  RightFrontLift.setStopping(brakeVal);
 }
 
 bool FrontLiftRunning = false;
@@ -263,13 +263,13 @@ void frontLiftDownDrive(){
 }
 
 void frontLiftUp(double degrees){
-  LeftFrontLift.rotateFor(degrees, rotationUnits::deg, 85, velocityUnits::pct, false);
-  RightFrontLift.rotateFor(degrees, rotationUnits::deg, 85, velocityUnits::pct, true);
+  LeftFrontLift.rotateFor(degrees*84/32, rotationUnits::deg, 85, velocityUnits::pct, false);
+  RightFrontLift.rotateFor(degrees*84/32, rotationUnits::deg, 85, velocityUnits::pct, true);
 }
 
 void frontLiftDown(double degrees){
-  LeftFrontLift.rotateFor(-degrees, rotationUnits::deg, 85, velocityUnits::pct, false);
-  RightFrontLift.rotateFor(-degrees, rotationUnits::deg, 85, velocityUnits::pct, true);
+  LeftFrontLift.rotateFor(-degrees*84/32, rotationUnits::deg, 85, velocityUnits::pct, false);
+  RightFrontLift.rotateFor(-degrees*84/32, rotationUnits::deg, 85, velocityUnits::pct, true);
 }
 
 

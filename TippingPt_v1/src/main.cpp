@@ -25,7 +25,7 @@ char MenuList[MENU_LENGTH][20] = {
   //"",                   //0 ITEM_NOT_USED
   "NGoalInFront",
   "No Action",           // NO_ACTION
-  
+
 };
 
 void MenuDown(void){
@@ -53,8 +53,15 @@ void pre_auton(void) {
   vexcodeInit();
 
   // Set to hold so it stays down before deploying
-  RightFrontLift.setBrake(hold);
-  LeftFrontLift.setBrake(hold);
+  mainControl.Screen.clearScreen();
+mainControl.Screen.setCursor(1, 1);
+  mainControl.Screen.print("Setting Brake...");
+  // setFrontLiftBrake(hold);
+  RightFrontLift.setStopping(hold);
+  LeftFrontLift.setStopping(hold);
+  mainControl.Screen.print("Brake Set!");
+ vex::task::sleep(10000);
+
 
   // Select Auton from Menu
   Brain.Screen.setFont(fontType::mono20);
@@ -63,8 +70,9 @@ void pre_auton(void) {
   mainControl.ButtonRight.pressed(MenuSelect);
   while (!MenuItemSelected){  // Allow for selection while program is not selected
     mainControl.Screen.clearScreen();
-    mainControl.Screen.setCursor(1, 1);
+    mainControl.Screen.setCursor(2, 1);
     mainControl.Screen.print("%s", MenuList[MenuItemHighlighted]);
+    vex::task::sleep(64);
   }
   mainControl.Screen.setCursor(2, 1); // Show selected program once prog has been selected
   mainControl.Screen.print("%s selected", MenuList[MenuItemHighlighted]);

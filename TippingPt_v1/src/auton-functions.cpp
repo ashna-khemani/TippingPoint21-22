@@ -4,17 +4,20 @@
 
 // NOTE: Deploy function goes here
 void flipOpen(){
-  // to be made
+  frontLiftUp(30);
+  wait(50, msec);
+  frontLiftDown(20);
 }
-
 void NGoalInFront(){
-  // flip Open
+  setFrontLiftBrake(hold);
+  wait(10, msec);
+  flipOpen();
   goFwd(48, 100);
   frontLiftUp(30);
   slideBackNonBlock(36, 100);
   wait(200, msec);  // Lower goal after 200msec of driving back
   frontLiftDown(30);
- 
+
 }
 
 // Idea: -- Master Plan
