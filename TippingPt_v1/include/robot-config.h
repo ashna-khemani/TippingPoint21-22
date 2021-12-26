@@ -19,6 +19,8 @@ extern motor FrontLift;
 extern motor BackLift;
 extern motor ConveyorBelt;
 
+extern motor Claw;
+
 extern controller mainControl;
 extern controller secondCtrl;
 extern vex::inertial InertialSensor;

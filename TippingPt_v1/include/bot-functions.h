@@ -42,3 +42,10 @@ void backLiftAuto_stage2(void);
 
 void conveyorBeltFwdDrive(void);
 void conveyorBeltBackDrive(void);
+void conveyorBeltFwd();
+void conveyorBeltBack();
+
+void clawOpenDrive(void);
+void clawCloseDrive(void);
+void clawOpen();
+void clawClose();

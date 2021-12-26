@@ -237,7 +237,7 @@ bool FrontLiftRunning = false;
 
 void frontLiftUpDrive(){
   if(!FrontLiftRunning){
-    FrontLift.spin(directionType::fwd);
+    FrontLift.spin(directionType::fwd, 100, velocityUnits::pct);
     FrontLiftRunning = true;
   }
   else{
@@ -248,7 +248,7 @@ void frontLiftUpDrive(){
 
 void frontLiftDownDrive(){
   if(!FrontLiftRunning){
-    FrontLift.spin(directionType::rev);
+    FrontLift.spin(directionType::rev, 100, velocityUnits::pct);
     FrontLiftRunning = true;
   }
   else{
@@ -275,7 +275,7 @@ bool BackLiftRunning = false;
 
 void backLiftUpDrive(){
   if(!BackLiftRunning){
-    BackLift.spin(directionType::fwd);
+    BackLift.spin(directionType::fwd, 100, velocityUnits::pct);
     BackLiftRunning = true;
   }
   else{
@@ -286,7 +286,7 @@ void backLiftUpDrive(){
 
 void backLiftDownDrive(){
   if(!BackLiftRunning){
-    BackLift.spin(directionType::rev);
+    BackLift.spin(directionType::rev, 100, velocityUnits::pct);
     BackLiftRunning = true;
   }
   else{
@@ -326,8 +326,7 @@ void backLiftAuto_stage2(void) {
 bool conveyorRunning = false;
 void conveyorBeltFwdDrive(){
   if(!conveyorRunning){
-    ConveyorBelt.spin(directionType::fwd);
-    ConveyorBelt.setVelocity(-35, velocityUnits::pct); 
+    ConveyorBelt.spin(directionType::fwd, 35, velocityUnits::pct);
     conveyorRunning = true;
   }
   else{
@@ -338,12 +337,47 @@ void conveyorBeltFwdDrive(){
 
 void conveyorBeltBackDrive(){
   if(!conveyorRunning){
-    ConveyorBelt.spin(directionType::rev);
-    ConveyorBelt.setVelocity(-35, velocityUnits::pct); 
+    ConveyorBelt.spin(directionType::rev, 35, velocityUnits::pct);
     conveyorRunning = true;
   }
   else{
     ConveyorBelt.stop();
     conveyorRunning = false;
   }
+}
+
+// CLAW FUNCTIONS
+void clawOpenDrive(){
+  bool clawRunning = false;
+  if(!clawRunning){
+    Claw.spin(directionType::fwd, 100, velocityUnits::pct);
+    clawRunning = true;
+  }
+  else{
+    Claw.stop();
+    clawRunning = false;
+  }
+}
+
+void clawCloseDrive(){
+  bool clawRunning = false;
+  if(!clawRunning){
+    Claw.spin(directionType::rev, 35, velocityUnits::pct);
+    clawRunning = true;
+  }
+  else{
+    Claw.stop();
+    clawRunning = false;
+  }
+}
+
+void clawOpen(){
+  Claw.spin(fwd, 100, pct);
+  wait(100, msec);
+  Claw.stop();
+}
+
+void clawClose(){
+  Claw.spin(fwd, 100, pct);  wait(100, msec);
+  Claw.stop();
 }

@@ -19,6 +19,8 @@ motor BackLift = motor(PORT12, ratio18_1, false);
 
 motor ConveyorBelt = motor(PORT15, ratio18_1, false);
 
+motor Claw = motor(PORT9, ratio18_1, false);
+
 controller mainControl = controller(primary);
 controller secondCtrl = controller(partner);
 vex::inertial InertialSensor = vex::inertial(vex::PORT10);
