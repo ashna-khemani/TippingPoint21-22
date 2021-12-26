@@ -40,4 +40,5 @@ void backLiftAuto(void);
 void backLiftAuto_stage1(void);
 void backLiftAuto_stage2(void);
 
-void conveyerBeltFwd(void);
+void conveyorBeltFwdDrive(void);
+void conveyorBeltBackDrive(void);

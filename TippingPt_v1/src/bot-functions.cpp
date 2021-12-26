@@ -316,22 +316,34 @@ void backLiftAuto(void){
 }
 void backLiftAuto_stage1(void) {
  BackLift.setBrake(brakeType::hold);
- BackLift.rotateFor(240, rotationUnits::deg,50, velocityUnits::pct, false);
+ BackLift.rotateFor(250, rotationUnits::deg,50, velocityUnits::pct, false); //240->250
 }
 void backLiftAuto_stage2(void) {
-  BackLift.rotateFor(-240, rotationUnits::deg,-50, velocityUnits::pct, false);
+  BackLift.rotateFor(-250, rotationUnits::deg,-50, velocityUnits::pct, false);
 }
 
 // Conveyor Belt Code
-bool ConveyerRunning = false;
-void conveyerBeltFwd(){
-  if(!ConveyerRunning){
-    ConveyorBelt.spin(directionType::rev);
-    ConveyorBelt.setVelocity(-35, velocityUnits::pct);
-    ConveyerRunning = true;
+bool conveyorRunning = false;
+void conveyorBeltFwdDrive(){
+  if(!conveyorRunning){
+    ConveyorBelt.spin(directionType::fwd);
+    ConveyorBelt.setVelocity(-35, velocityUnits::pct); 
+    conveyorRunning = true;
   }
   else{
     ConveyorBelt.stop();
-    ConveyerRunning = false;
+    conveyorRunning = false;
+  }
+}
+
+void conveyorBeltBackDrive(){
+  if(!conveyorRunning){
+    ConveyorBelt.spin(directionType::rev);
+    ConveyorBelt.setVelocity(-35, velocityUnits::pct); 
+    conveyorRunning = true;
+  }
+  else{
+    ConveyorBelt.stop();
+    conveyorRunning = false;
   }
 }
