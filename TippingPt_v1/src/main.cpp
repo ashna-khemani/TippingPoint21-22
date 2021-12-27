@@ -59,7 +59,7 @@ void pre_auton(void) {
   // setFrontLiftBrake(hold);
   FrontLift.setStopping(hold);
   mainControl.Screen.print("Brake Set!");
-  vex::task::sleep(10000);
+  vex::task::sleep(3000);
 
 
   // Select Auton from Menu
