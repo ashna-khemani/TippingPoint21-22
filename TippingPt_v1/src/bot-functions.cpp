@@ -381,3 +381,7 @@ void clawClose(){
   Claw.spin(fwd, 100, pct);  wait(100, msec);
   Claw.stop();
 }
+
+void setClawBrake(vex::brakeType brakeVal){
+  Claw.setBrake(brakeVal);
+}

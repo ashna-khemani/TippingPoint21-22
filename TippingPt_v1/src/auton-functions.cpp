@@ -8,11 +8,15 @@ void flipOpen(){
   wait(50, msec);
   frontLiftDown(20);
 }
+
 void NGoalInFront(){
   setFrontLiftBrake(hold);
+  setClawBrake(hold);
   wait(10, msec);
-  flipOpen();
+  clawOpen();
+  // flipOpen();
   goFwd(48, 100);
+  clawClose();
   frontLiftUp(30);
   slideBackNonBlock(36, 100);
   wait(200, msec);  // Lower goal after 200msec of driving back
