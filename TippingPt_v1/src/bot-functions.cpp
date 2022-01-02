@@ -386,3 +386,12 @@ void clawClose(){
 void setClawBrake(vex::brakeType brakeVal){
   Claw.setBrake(brakeVal);
 }
+
+// Pneumatics Code
+void pistOpen(){
+  Pist.open();
+}
+
+void pistClose(){
+  Pist.close();
+}

@@ -50,3 +50,6 @@ void clawCloseDrive(void);
 void clawOpen();
 void clawClose();
 void setClawBrake(vex::brakeType brakeVal);
+
+void pistOpen();
+void pistClose();

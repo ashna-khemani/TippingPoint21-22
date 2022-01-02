@@ -89,6 +89,9 @@ void pre_auton(void) {
   mainControl.ButtonX.pressed(clawOpen);
   mainControl.ButtonB.pressed(clawClose);
 
+  mainControl.ButtonY.pressed(pistOpen);
+  mainControl.ButtonA.pressed(pistClose);
+
   // Inertial Sensor setup
   int limitLoop = 0;
   InertialSensor.calibrate();

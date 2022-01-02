@@ -21,6 +21,8 @@ extern motor ConveyorBelt;
 
 extern motor Claw;
 
+extern pneumatics Pist;
+
 extern controller mainControl;
 extern controller secondCtrl;
 extern vex::inertial InertialSensor;

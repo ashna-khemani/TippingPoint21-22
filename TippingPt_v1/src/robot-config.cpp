@@ -21,6 +21,8 @@ motor ConveyorBelt = motor(PORT15, ratio18_1, true);
 
 motor Claw = motor(PORT9, ratio18_1, false);
 
+pneumatics Pist = vex::pneumatics(Brain.ThreeWirePort.B);
+
 controller mainControl = controller(primary);
 controller secondCtrl = controller(partner);
 vex::inertial InertialSensor = vex::inertial(vex::PORT10);
