@@ -17,7 +17,7 @@ motor FrontLift = motor(PORT10, ratio18_1, false);
 
 motor BackLift = motor(PORT12, ratio18_1, false);
 
-motor ConveyorBelt = motor(PORT15, ratio18_1, false);
+motor ConveyorBelt = motor(PORT15, ratio18_1, true);
 
 motor Claw = motor(PORT9, ratio18_1, false);
 
