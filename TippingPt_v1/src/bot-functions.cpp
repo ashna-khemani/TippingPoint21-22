@@ -362,7 +362,7 @@ void clawOpenDrive(){
 void clawCloseDrive(){
   bool clawRunning = false;
   if(!clawRunning){
-    Claw.spin(directionType::rev, 35, velocityUnits::pct);
+    Claw.spin(directionType::rev, 100, velocityUnits::pct);
     clawRunning = true;
   }
   else{
@@ -378,7 +378,8 @@ void clawOpen(){
 }
 
 void clawClose(){
-  Claw.spin(fwd, 100, pct);  wait(100, msec);
+  Claw.spin(directionType::rev, 100, velocityUnits::pct); 
+  wait(100, msec);
   Claw.stop();
 }
 
