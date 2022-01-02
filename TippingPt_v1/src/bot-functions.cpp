@@ -373,13 +373,13 @@ void clawCloseDrive(){
 
 void clawOpen(){
   Claw.spin(fwd, 100, pct);
-  wait(400, msec);
+  wait(300, msec);
   Claw.stop();
 }
 
 void clawClose(){
   Claw.spin(directionType::rev, 100, velocityUnits::pct); 
-  wait(400, msec);
+  wait(300, msec);
   Claw.stop();
 }
 
