@@ -16,11 +16,17 @@ using namespace vex;
 
 int main() {
   // Initializing Robot Configuration. DO NOT REMOVE!
-  vexcodeInit();
-  Pist.set(false);
-  wait(10,sec);
-  Pist.set(true);
-  wait(500, msec);
-  Pist.set(false);
+  while (true){
+    if(mainControl.ButtonR1.pressing()){
+      Pist.set(false);
+      wait(100, msec);
+    }
+    else{
+      Pist.set(true);
+      wait(100, msec);
+    }
+    wait(100, msec);
+  }
+  
   
 }
