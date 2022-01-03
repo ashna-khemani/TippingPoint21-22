@@ -53,19 +53,14 @@ void pre_auton(void) {
   vexcodeInit();
 
 
-  // pistOpen();
-
-
+  backClampClose();
 
   // Set to hold so it stays down before deploying
   mainControl.Screen.clearScreen();
   mainControl.Screen.setCursor(1, 1);
-  mainControl.Screen.print("Setting Brake...");
-  // setFrontLiftBrake(hold);
+
   FrontLift.setStopping(hold);
   Claw.setStopping(hold);
-  mainControl.Screen.print("Brake Set!");
-  vex::task::sleep(3000);
 
 
   // Select Auton from Menu
