@@ -8,6 +8,10 @@
 /*----------------------------------------------------------------------------*/
 
 // ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// DigitalOutC          digital_out   C               
+// Controller1          controller                    
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
@@ -17,13 +21,11 @@ using namespace vex;
 int main() {
   // Initializing Robot Configuration. DO NOT REMOVE!
   while (true){
-    if(mainControl.ButtonR1.pressing()){
-      Pist.set(false);
-      wait(100, msec);
+    if(Controller1.ButtonR1.pressing()){
+      DigitalOutC.set(true);
     }
     else{
-      Pist.set(true);
-      wait(100, msec);
+      DigitalOutC.set(false);
     }
     wait(100, msec);
   }
