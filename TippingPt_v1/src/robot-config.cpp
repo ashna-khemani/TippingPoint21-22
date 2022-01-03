@@ -21,7 +21,7 @@ motor ConveyorBelt = motor(PORT15, ratio18_1, true);
 
 motor Claw = motor(PORT9, ratio18_1, false);
 
-pneumatics Pist = vex::pneumatics(Brain.ThreeWirePort.B);
+digital_out BackClamp = digital_out(Brain.ThreeWirePort.C);
 
 controller mainControl = controller(primary);
 controller secondCtrl = controller(partner);

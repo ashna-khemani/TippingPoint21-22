@@ -21,7 +21,7 @@ extern motor ConveyorBelt;
 
 extern motor Claw;
 
-extern pneumatics Pist;
+extern digital_out BackClamp;
 
 extern controller mainControl;
 extern controller secondCtrl;
