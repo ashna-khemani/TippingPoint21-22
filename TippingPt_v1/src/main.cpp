@@ -53,7 +53,6 @@ void pre_auton(void) {
   vexcodeInit();
 
 
-  pistClose();
   // pistOpen();
 
 
@@ -91,8 +90,7 @@ void pre_auton(void) {
   mainControl.ButtonL1.pressed(backLiftUpDrive);
   mainControl.ButtonL2.pressed(backLiftDownDrive);
   mainControl.ButtonLeft.pressed(backLiftAuto);
-  mainControl.ButtonY.pressed(backClampOpen);
-  mainControl.ButtonA.pressed(backClampClose);
+  mainControl.ButtonA.pressed(backClampDrive);
 
   mainControl.ButtonUp.pressed(conveyorBeltFwdDrive);
   mainControl.ButtonDown.pressed(conveyorBeltBackDrive);

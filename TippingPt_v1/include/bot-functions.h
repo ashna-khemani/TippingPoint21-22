@@ -53,3 +53,4 @@ void setClawBrake(vex::brakeType brakeVal);
 
 void backClampOpen();
 void backClampClose();
+void backClampDrive();

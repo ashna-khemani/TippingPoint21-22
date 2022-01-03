@@ -404,3 +404,12 @@ void backClampClose(){
   BackClamp.set(false);
   wait(50, msec);
 }
+
+void backClampDrive(){
+  if (BackClamp.value() == 0){  // If not closed, make it open
+    backClampOpen();
+  }
+  else{ // If open, make it closed
+    backClampClose();
+  }
+}
