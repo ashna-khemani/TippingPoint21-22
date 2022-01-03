@@ -389,9 +389,15 @@ void setClawBrake(vex::brakeType brakeVal){
 
 // Pneumatics Code
 void pistOpen(){
-  Pist.open();
+  Pist.set(true);
+  Brain.Screen.newLine();
+  Brain.Screen.print("Opened");
+  vex::task::sleep(10);
+  Pist.set(false);
 }
 
 void pistClose(){
-  Pist.close();
+  Pist.set(false);
+  Brain.Screen.newLine();
+  Brain.Screen.print("Closed");
 }

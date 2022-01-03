@@ -52,6 +52,12 @@ void pre_auton(void) {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
 
+
+  pistClose();
+  // pistOpen();
+
+
+
   // Set to hold so it stays down before deploying
   mainControl.Screen.clearScreen();
   mainControl.Screen.setCursor(1, 1);
