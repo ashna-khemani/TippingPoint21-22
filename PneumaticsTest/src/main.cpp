@@ -17,6 +17,8 @@ using namespace vex;
 int main() {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
-
+  Pist.set(true);
+  wait(500, msec);
+  Pist.set(false);
   
 }
