@@ -87,16 +87,20 @@ void pre_auton(void) {
   // Drive buttons
   mainControl.ButtonR1.pressed(frontLiftUpDrive);
   mainControl.ButtonR2.pressed(frontLiftDownDrive);
+
   mainControl.ButtonL1.pressed(backLiftUpDrive);
   mainControl.ButtonL2.pressed(backLiftDownDrive);
   mainControl.ButtonLeft.pressed(backLiftAuto);
+  mainControl.ButtonY.pressed(backClampOpen);
+  mainControl.ButtonA.pressed(backClampClose);
+
   mainControl.ButtonUp.pressed(conveyorBeltFwdDrive);
   mainControl.ButtonDown.pressed(conveyorBeltBackDrive);
+
   mainControl.ButtonX.pressed(clawOpen);
   mainControl.ButtonB.pressed(clawClose);
 
-  mainControl.ButtonY.pressed(pistOpen);
-  mainControl.ButtonA.pressed(pistClose);
+
 
   // Inertial Sensor setup
   int limitLoop = 0;

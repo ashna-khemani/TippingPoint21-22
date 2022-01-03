@@ -322,6 +322,8 @@ void backLiftAuto_stage2(void) {
   BackLift.rotateFor(-250, rotationUnits::deg,-50, velocityUnits::pct, false);
 }
 
+
+
 // Conveyor Belt Code
 bool conveyorRunning = false;
 void conveyorBeltFwdDrive(){
@@ -345,6 +347,8 @@ void conveyorBeltBackDrive(){
     conveyorRunning = false;
   }
 }
+
+
 
 // CLAW FUNCTIONS
 void clawOpenDrive(){
@@ -387,17 +391,16 @@ void setClawBrake(vex::brakeType brakeVal){
   Claw.setBrake(brakeVal);
 }
 
-// Pneumatics Code
-void pistOpen(){
-  Pist.set(true);
-  Brain.Screen.newLine();
-  Brain.Screen.print("Opened");
-  vex::task::sleep(10);
-  Pist.set(false);
+
+
+
+// Back Clamp Pneumatic Code
+void backClampOpen(){
+  BackClamp.set(true);
+  wait(50, msec);
 }
 
-void pistClose(){
-  Pist.set(false);
-  Brain.Screen.newLine();
-  Brain.Screen.print("Closed");
+void backClampClose(){
+  BackClamp.set(false);
+  wait(50, msec);
 }
