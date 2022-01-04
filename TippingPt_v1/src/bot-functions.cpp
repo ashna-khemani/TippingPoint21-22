@@ -228,13 +228,12 @@ void alignToHeading(float targetHeading){
 
 
 
-// Front MoGo Lift Functions  // TODO chuck these into main preauton and header
-void setFrontLiftBrake(vex::brakeType brakeVal){ //TODO: put this in main
+// Front MoGo Lift Functions  
+void setFrontLiftBrake(vex::brakeType brakeVal){ 
   FrontLift.setStopping(brakeVal);
 }
 
 bool FrontLiftRunning = false;
-
 void frontLiftUpDrive(){
   if(!FrontLiftRunning){
     FrontLift.spin(directionType::fwd, 100, velocityUnits::pct);
