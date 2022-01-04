@@ -2,23 +2,19 @@
 # include "bot-functions.h"
 # include "auton-functions.h"
 
-// NOTE: Deploy function goes here
-void flipOpen(){
-  frontLiftUp(30);
-  wait(50, msec);
-  frontLiftDown(20);
-}
+
 
 void NGoalInFront(){
   setFrontLiftBrake(hold);
   setClawBrake(hold);
   wait(10, msec);
-  clawOpen();
-  // flipOpen();
+  
   goFwd(48, 100);
   clawClose();
-  frontLiftUp(30);
+
   slideBackNonBlock(36, 100);
+  frontLiftUp(30);
+  
   wait(200, msec);  // Lower goal after 200msec of driving back
   frontLiftDown(30);
 
