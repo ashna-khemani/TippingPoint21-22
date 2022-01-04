@@ -6,6 +6,7 @@
 #define REVTOANGLELEFT      (1.0/87.5)   //1 rotations to turn 91.25 degrees 87.5
 
 #define TURN_WEIGHT     0.75  // Reduce turning sensitivity when driving. Forward/backward are not affected //april 11 was .6
+#define AVAS_TURN_WEIGHT 0.6
 #define DRIVE_WEIGHT    0.9  // Reduce driving sensitivity when driving. Forward/backward are not affected ap 11 .9
 
 // Drive function declarations
