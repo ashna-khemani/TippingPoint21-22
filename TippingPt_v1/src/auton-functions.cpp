@@ -8,16 +8,12 @@ void NGoalInFront(){
   setFrontLiftBrake(hold);
   setClawBrake(hold);
   wait(10, msec);
-  
-  goFwd(48, 100);
+
+  slideFwd(45, 100);
   clawClose();
 
   slideBackNonBlock(36, 100);
-  frontLiftUp(30);
   
-  wait(200, msec);  // Lower goal after 200msec of driving back
-  frontLiftDown(30);
-
 }
 
 // Idea: -- Master Plan
