@@ -396,20 +396,20 @@ void setClawBrake(vex::brakeType brakeVal){
 
 // Back Clamp Pneumatic Code
 void backClampOpen(){
-  BackClamp.set(true);
-  wait(50, msec);
-}
-
-void backClampClose(){
   BackClamp.set(false);
   wait(50, msec);
 }
 
+void backClampClose(){  // Pass air into piston to close
+  BackClamp.set(true);
+  wait(50, msec);
+}
+
 void backClampDrive(){
-  if (BackClamp.value() == 0){  // If not closed, make it open
-    backClampOpen();
-  }
-  else{ // If open, make it closed
+  if (BackClamp.value() == 0){  // If open, make it close
     backClampClose();
+  }
+  else{ // If closed, make it open 
+    backClampOpen();
   }
 }

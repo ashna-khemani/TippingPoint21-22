@@ -53,7 +53,7 @@ void pre_auton(void) {
   vexcodeInit();
 
 
-  backClampClose();
+  backClampOpen();  // Set so no air is passing through solenoid
 
   // Set to hold so it stays down before deploying
   mainControl.Screen.clearScreen();
