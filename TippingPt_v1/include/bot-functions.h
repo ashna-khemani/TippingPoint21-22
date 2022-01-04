@@ -45,10 +45,9 @@ void conveyorBeltBackDrive(void);
 void conveyorBeltFwd();
 void conveyorBeltBack();
 
-void clawOpenDrive(void);
-void clawCloseDrive(void);
 void clawOpen();
 void clawClose();
+void clawDrive(void);
 void setClawBrake(vex::brakeType brakeVal);
 
 void backClampOpen();

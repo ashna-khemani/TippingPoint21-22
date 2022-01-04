@@ -351,30 +351,6 @@ void conveyorBeltBackDrive(){
 
 
 // CLAW FUNCTIONS
-void clawOpenDrive(){
-  bool clawRunning = false;
-  if(!clawRunning){
-    Claw.spin(directionType::fwd, 100, velocityUnits::pct);
-    clawRunning = true;
-  }
-  else{
-    Claw.stop();
-    clawRunning = false;
-  }
-}
-
-void clawCloseDrive(){
-  bool clawRunning = false;
-  if(!clawRunning){
-    Claw.spin(directionType::rev, 100, velocityUnits::pct);
-    clawRunning = true;
-  }
-  else{
-    Claw.stop();
-    clawRunning = false;
-  }
-}
-
 void clawOpen(){
   Claw.spin(fwd, 100, pct);
   wait(300, msec);
@@ -387,9 +363,22 @@ void clawClose(){
   Claw.stop();
 }
 
+bool ClawIsOpen = true; // Claw is open at beginning of program
+void clawDrive(){
+  if (ClawIsOpen){
+    clawClose();
+    ClawIsOpen = false; // Update status
+  }
+  else{
+    clawOpen();
+    ClawIsOpen = true;  // Update status
+  }
+}
+
 void setClawBrake(vex::brakeType brakeVal){
   Claw.setBrake(brakeVal);
 }
+
 
 
 

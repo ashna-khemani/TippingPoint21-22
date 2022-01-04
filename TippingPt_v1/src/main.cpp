@@ -90,8 +90,7 @@ void pre_auton(void) {
   mainControl.ButtonUp.pressed(conveyorBeltFwdDrive);
   mainControl.ButtonDown.pressed(conveyorBeltBackDrive);
 
-  mainControl.ButtonX.pressed(clawOpen);
-  mainControl.ButtonB.pressed(clawClose);
+  mainControl.ButtonX.pressed(clawDrive);
 
 
 
