@@ -81,16 +81,18 @@ void pre_auton(void) {
   // Drive buttons
   mainControl.ButtonR1.pressed(frontLiftUpDrive);
   mainControl.ButtonR2.pressed(frontLiftDownDrive);
-
-  mainControl.ButtonL1.pressed(backLiftUpDrive);
-  mainControl.ButtonL2.pressed(backLiftDownDrive);
-  mainControl.ButtonLeft.pressed(backLiftAuto);
-  mainControl.ButtonA.pressed(backClampDrive);
+  mainControl.ButtonX.pressed(clawDrive);
 
   mainControl.ButtonUp.pressed(conveyorBeltFwdDrive);
   mainControl.ButtonDown.pressed(conveyorBeltBackDrive);
 
-  mainControl.ButtonX.pressed(clawDrive);
+
+  secondCtrl.ButtonR1.pressed(backLiftUpDrive);
+  secondCtrl.ButtonR2.pressed(backLiftDownDrive);
+  secondCtrl.ButtonLeft.pressed(backLiftAuto);
+  secondCtrl.ButtonX.pressed(backClampDrive);
+
+  
 
 
 
@@ -147,8 +149,8 @@ void usercontrol(void) {
   int leftPwr, rightPwr;
   while (1) {
     //origial code
-    fwd = filter(mainControl.Axis3.position()) * DRIVE_WEIGHT;
-    trn = filter(mainControl.Axis1.position()) * TURN_WEIGHT;
+    fwd = (filter(mainControl.Axis3.position()) - filter(secondCtrl.Axis3.position())) * DRIVE_WEIGHT;
+    trn = (filter(mainControl.Axis1.position()) - filter(secondCtrl.Axis1.position())) * TURN_WEIGHT;
     leftPwr = (fwd + trn);
     rightPwr = (fwd - trn);
 
