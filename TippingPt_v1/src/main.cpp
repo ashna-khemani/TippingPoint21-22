@@ -150,7 +150,7 @@ void usercontrol(void) {
   while (1) {
     //origial code
     fwd = (filter(mainControl.Axis3.position()) - filter(secondCtrl.Axis3.position())) * DRIVE_WEIGHT;
-    trn = (filter(mainControl.Axis1.position()) - filter(secondCtrl.Axis1.position())) * TURN_WEIGHT;
+    trn = (filter(mainControl.Axis1.position()) + filter(secondCtrl.Axis1.position())) * TURN_WEIGHT;
     leftPwr = (fwd + trn);
     rightPwr = (fwd - trn);
 
