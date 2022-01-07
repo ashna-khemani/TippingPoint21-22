@@ -295,11 +295,11 @@ void backLiftDownDrive(){
 }
 
 void backLiftUp(double degrees){
-  BackLift.rotateFor(degrees*14, rotationUnits::deg, 85, velocityUnits::pct, true);
+  BackLift.rotateFor(degrees*7, rotationUnits::deg, 85, velocityUnits::pct, true);
 }
 
 void backLiftDown(double degrees){
-  BackLift.rotateFor(-degrees*14, rotationUnits::deg, 85, velocityUnits::pct, true);
+  BackLift.rotateFor(-degrees*7, rotationUnits::deg, 85, velocityUnits::pct, true);
 }
 
 int backLiftStage = 0;
