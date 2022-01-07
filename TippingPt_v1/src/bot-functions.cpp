@@ -302,6 +302,14 @@ void backLiftDown(double degrees){
   BackLift.rotateFor(-degrees*7, rotationUnits::deg, 85, velocityUnits::pct, true);
 }
 
+void backLiftUpNonBlocking(double degrees){
+  BackLift.rotateFor(degrees*7, rotationUnits::deg, 85, velocityUnits::pct, false);
+}
+
+void backLiftDownNonBlocking(double degrees){
+  BackLift.rotateFor(-degrees*7, rotationUnits::deg, 85, velocityUnits::pct, false);
+}
+
 int backLiftStage = 0;
 void backLiftAuto(void){
   if (backLiftStage == 0) {

@@ -38,6 +38,8 @@ void backLiftDownDrive(void);
 void backLiftUp(double degrees);
 void backLiftDown(double degrees);
 void backLiftAuto(void);
+void backLiftUpNonBlocking(double degrees);
+void backLiftDownNonBlocking(double degrees);
 void backLiftAuto_stage1(void);
 void backLiftAuto_stage2(void);
 
