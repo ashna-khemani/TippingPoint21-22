@@ -17,6 +17,7 @@ enum Sides{
 enum MenuItems{
   //ITEM_NOT_USED,
   N_GOAL_IN_FRONT,
+  N_GOAL_AND_R_AWP,
   NO_ACTION,
   MENU_LENGTH,
 };
@@ -24,6 +25,7 @@ enum MenuItems{
 char MenuList[MENU_LENGTH][20] = {
   //"",                   //0 ITEM_NOT_USED
   "NGoalInFront",
+  "NGoalAndRAWP",
   "No Action",           // NO_ACTION
 
 };
@@ -123,6 +125,9 @@ void autonomous(void) {
     */
     case N_GOAL_IN_FRONT:
       NGoalInFront();
+      break;
+    case N_GOAL_AND_R_AWP:
+      NGoalAndRAWP();
       break;
     case NO_ACTION:
       vex::task::sleep(10000);
