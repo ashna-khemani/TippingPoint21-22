@@ -26,7 +26,7 @@ void NGoalAndRAWP(){
   turnLeft(90);
   slideBackNonBlock(6, 100);
   backLiftUp(85);
-  goBack(6, 100);
+  goBack(14, 100);
 
   // Hook on and Ring ownG
   backLiftDown(20);
@@ -34,11 +34,6 @@ void NGoalAndRAWP(){
 
   // Drag it out
   goFwd(12, 100);
-
-  // Don't touch it
-  backLiftUp(65);
-  goFwd(10, 100);
-  backLiftDown(85);
 
 }
 // Idea: -- Master Plan
