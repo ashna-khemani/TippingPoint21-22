@@ -5,7 +5,7 @@
 
 
 void NGoalInFront(){
-  slideFwd(45, 100);
+  slideFwd(47, 100);
   clawClose();
 
   slideBackNonBlock(36, 100);
@@ -16,7 +16,7 @@ void NGoalAndRAWP(){
   backClampClose();
 
   // Get NGoal
-  slideFwd(45, 100);
+  slideFwd(47, 100);
   clawClose();
   goBack(8.5, 100);
   clawOpen();
@@ -24,9 +24,10 @@ void NGoalAndRAWP(){
   // Align w/ ownG
   goBack(7.5, 100);
   turnLeft(90);
-  slideBackNonBlock(6, 100);
-  backLiftUp(85);
-  goBack(14, 100);
+  slideBackNonBlock(17, 100);
+  backLiftUp(90);
+  wait(300, msec);
+  goBack(3, 100);
 
   // Hook on and Ring ownG
   backLiftDown(20);
