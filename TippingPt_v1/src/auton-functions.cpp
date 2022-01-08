@@ -16,14 +16,16 @@ void NGoalAndRAWP(){
   backClampClose();
 
   // Get NGoal
-  drivePI(47);
+  drivePI(49);
+  Claw.setBrake(hold);
   clawClose();
-  drivePI(-23); // Aligns to ownG
+  drivePI(-25); // Aligns to ownG
   backLiftUpNonBlocking(95);
   turnLeft(90);
+  clawOpen();
   wait(10, msec);
   alignToHeading(270);
-  clawOpen();
+  
 
   // Back into ownG
   drivePI(-11);
@@ -33,7 +35,8 @@ void NGoalAndRAWP(){
   backClampOpen();
 
   // Drag it out
-  goFwd(12, 40);
+  goFwd(17, 40);
+  backLiftUp(10); // To pop the ring out
 
 }
 
