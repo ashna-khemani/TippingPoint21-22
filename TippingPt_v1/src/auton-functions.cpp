@@ -18,7 +18,7 @@ void NGoalAndRAWP(){
   // Get NGoal
   drivePI(47);
   clawClose();
-  drivePI(-20); // Aligns to ownG
+  drivePI(-23); // Aligns to ownG
   backLiftUpNonBlocking(95);
   turnLeft(90);
   wait(10, msec);
@@ -26,14 +26,14 @@ void NGoalAndRAWP(){
   clawOpen();
 
   // Back into ownG
-  drivePI(-9);
+  drivePI(-11);
 
   // Hook on and Ring ownG
-  backLiftDown(25);
+  backLiftDown(35);
   backClampOpen();
 
   // Drag it out
-  goFwd(12, 100);
+  goFwd(12, 40);
 
 }
 
