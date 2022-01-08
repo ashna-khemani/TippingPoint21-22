@@ -201,8 +201,8 @@ void alignToHeading(float targetHeading){
     }
 
     if (fabs(error) > 45) {
-      Brain.Screen.setCursor(1, 1);
-      Brain.Screen.print("aToHd c%f er%f", currentHeading, error);
+      // Brain.Screen.setCursor(1, 1);
+      // Brain.Screen.print("aToHd c%f er%f", currentHeading, error);
     //  return;
     }
     setDrivetoBrakeType(brakeType::hold);

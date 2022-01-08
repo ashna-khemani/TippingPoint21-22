@@ -57,6 +57,8 @@ void pre_auton(void) {
 
   backClampOpen();  // Set so no air is passing through solenoid
 
+  
+
   // Set to hold so it stays down before deploying
   mainControl.Screen.clearScreen();
   mainControl.Screen.setCursor(1, 1);

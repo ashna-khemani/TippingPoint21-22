@@ -16,25 +16,27 @@ void NGoalAndRAWP(){
   backClampClose();
 
   // Get NGoal
-  slideFwd(46, 100);
+  drivePI(47);
   clawClose();
-  goBack(8.5, 100);
+  drivePI(-20); // Aligns to ownG
+  backLiftUpNonBlocking(95);
+  turnLeft(90);
+  wait(10, msec);
+  alignToHeading(270);
   clawOpen();
 
-  // Align w/ ownG
-  goBack(7.5, 100);
-  turnLeft(90);
-  backLiftUpNonBlocking(90);
-  goBack(20, 100);
+  // Back into ownG
+  drivePI(-9);
 
   // Hook on and Ring ownG
-  backLiftDown(20);
+  backLiftDown(25);
   backClampOpen();
 
   // Drag it out
   goFwd(12, 100);
 
 }
+
 // Idea: -- Master Plan
   // deploy back lift
   // zoom fwd to NGoal
