@@ -9,7 +9,13 @@ void NGoalInFront(){
   clawClose();
 
   slideBackNonBlock(36, 100);
-  
+}
+
+void NGoalInFrontL(){
+  slideFwd(49.5, 100);
+  clawClose();
+
+  slideBackNonBlock(36, 100);
 }
 
 void NGoalAndRAWP(){
@@ -37,6 +43,11 @@ void NGoalAndRAWP(){
   // Drag it out
   goFwd(17, 40);
   backLiftUp(10); // To pop the ring out
+  wait(2000, msec);
+
+  // Let go
+  backLiftUp(40);
+  goFwd(10, 100);
 
 }
 

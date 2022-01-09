@@ -19,7 +19,7 @@ motor BackLift = motor(PORT12, ratio36_1, false);
 
 motor ConveyorBelt = motor(PORT15, ratio18_1, true);
 
-motor Claw = motor(PORT9, ratio18_1, false);
+motor Claw = motor(PORT9, ratio36_1, false);
 
 digital_out BackClamp = digital_out(Brain.ThreeWirePort.C);
 

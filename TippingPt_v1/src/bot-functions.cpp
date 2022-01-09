@@ -359,14 +359,16 @@ void conveyorBeltBackDrive(){
 
 // CLAW FUNCTIONS
 void clawOpen(){
+  Claw.setStopping(hold);
   Claw.spin(fwd, 100, pct);
-  wait(300, msec);
+  wait(600, msec);
   Claw.stop();
 }
 
 void clawClose(){
+  Claw.setStopping(hold);
   Claw.spin(directionType::rev, 100, velocityUnits::pct); 
-  wait(300, msec);
+  wait(600, msec);
   Claw.stop();
 }
 
