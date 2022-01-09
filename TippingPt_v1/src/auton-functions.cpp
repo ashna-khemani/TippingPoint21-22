@@ -53,6 +53,17 @@ void NGoalAndRAWP(){
 
 }
 
+void Skills_1(){
+  
+  //Setup and grab Red Mogo
+  backClampClose();
+  drivePI(6);
+  clawClose();
+  wait(200, msec);
+  drivePI(-12); // Aligns to ownG
+
+}
+
 // Idea: -- Master Plan
   // deploy back lift
   // zoom fwd to NGoal

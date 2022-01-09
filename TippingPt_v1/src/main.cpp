@@ -19,6 +19,7 @@ enum MenuItems{
   N_GOAL_IN_FRONT,
   N_GOAL_IN_FRONT_L,
   N_GOAL_AND_R_AWP,
+  SKILLS_1,
   NO_ACTION,
   MENU_LENGTH,
 };
@@ -28,6 +29,7 @@ char MenuList[MENU_LENGTH][20] = {
   "NGoalInFront",
   "NGoalInFrontL",
   "NGoalAndRAWP",
+  "Skills 1",
   "No Action",           // NO_ACTION
 
 };
@@ -132,6 +134,9 @@ void autonomous(void) {
       break;
     case N_GOAL_AND_R_AWP:
       NGoalAndRAWP();
+      break;
+    case SKILLS_1:
+      Skills_1();
       break;
     case NO_ACTION:
       vex::task::sleep(10000);
