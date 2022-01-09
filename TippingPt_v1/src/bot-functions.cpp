@@ -360,12 +360,12 @@ void conveyorBeltBackDrive(){
 // CLAW FUNCTIONS
 void clawOpen(){
   Claw.setStopping(hold);
-  Claw.rotateFor(89, rotationUnits::deg, 100, velocityUnits::pct, false);
+  Claw.rotateFor(50, rotationUnits::deg, 100, velocityUnits::pct, false);
 }
 
 void clawClose(){
   Claw.setStopping(hold);
-  Claw.rotateFor(-89, rotationUnits::deg, 100, velocityUnits::pct, false);
+  Claw.rotateFor(-50, rotationUnits::deg, 100, velocityUnits::pct, false);
 
 //  Claw.spin(directionType::rev, 100, velocityUnits::pct); 
 //  wait(600, msec);
@@ -407,4 +407,56 @@ void backClampDrive(){
   else{ // If closed, make it open 
     backClampOpen();
   }
+}
+
+
+
+// Other
+void autoBalance(){
+  //rotation will happen on x axis
+  // calibrate to create reference point when robot is flat. would be using the gyro
+  // maybe use gyroRate?
+  // orientation?
+  // changed
+  // pitch -- USE THIS
+  // Make it a PID ?
+  double targetAngle = 0;
+
+  double motorspeed = 0, currentAngle = InertialSensor.pitch(),
+         error = (targetAngle - currentAngle), errorSum = 0, deltaE = 0,
+         lastError = 0, maxAllowedError = 1.0, errorTimerMax = 50;
+  double kP = 10, kI = 0.0, kD = 15;
+  bool timerExpired = false;
+  timer errorTimer = timer();
+  errorTimer.clear();
+
+  while ((fabs(error) > maxAllowedError) && (timerExpired==false)){
+    currentAngle = InertialSensor.pitch();
+    error = targetAngle - currentAngle;
+    errorSum += error;
+    deltaE = (error - lastError) / 5000;
+    motorspeed = (error * kP) + (errorSum * kI) + (deltaE * kD);
+
+    BackLeftMotor.spin(directionType::fwd, motorspeed, velocityUnits::pct);
+    FrontLeftMotor.spin(directionType::fwd, motorspeed, velocityUnits::pct);
+    FrontRightMotor.spin(directionType::fwd, motorspeed, velocityUnits::pct);
+    BackRightMotor.spin(directionType::fwd, motorspeed, velocityUnits::pct);
+
+    lastError = error;
+
+    if (fabs(error) > maxAllowedError) {
+      errorTimer.clear();
+    } 
+    else {
+      if (errorTimer.time() > errorTimerMax) {
+        timerExpired = true;
+      }
+    }
+    vex::task::sleep(20);
+  }
+  BackLeftMotor.stop(brake);
+  FrontLeftMotor.stop(brake);
+  FrontRightMotor.stop(brake);
+  BackRightMotor.stop(brake);
+
 }
