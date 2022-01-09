@@ -5,7 +5,7 @@
 
 
 void NGoalInFront(){
-  drivePI(45);
+  drivePD(45);
   clawClose();
   wait(200, msec);
 
@@ -13,7 +13,7 @@ void NGoalInFront(){
 }
 
 void NGoalInFrontL(){
-  drivePI(49.5);
+  drivePD(49.5);
   clawClose();
   wait(200, msec);
 
@@ -24,10 +24,10 @@ void NGoalAndRAWP(){
   backClampClose();
 
   // Get NGoal
-  drivePI(49);
+  drivePD(49);
   clawClose();
   wait(200, msec);
-  drivePI(-25); // Aligns to ownG
+  drivePD(-25); // Aligns to ownG
   backLiftUpNonBlocking(95);
   turnLeft(90);
   clawOpen();
@@ -36,7 +36,7 @@ void NGoalAndRAWP(){
   
 
   // Back into ownG
-  drivePI(-11);
+  drivePD(-11);
 
   // Hook on and Ring ownG
   backLiftDown(35);
@@ -54,13 +54,13 @@ void NGoalAndRAWP(){
 }
 
 void Skills_1(){
-  
+
   //Setup and grab Red Mogo
   backClampClose();
-  drivePI(6);
+  drivePD(6);
   clawClose();
   wait(200, msec);
-  drivePI(-12); // Aligns to ownG
+  drivePD(-12); // Aligns to ownG
 
 }
 

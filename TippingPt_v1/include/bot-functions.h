@@ -21,7 +21,7 @@ void stopDriveTrain(void);
 void turnLeft(float degree);
 void turnRight(float degree);
 void alignToHeading(float targetHeading);
-void drivePI(double targetDistance);
+void drivePD(double targetDistance);
 
 // Lift functions declarations
 void setFrontLiftBrake(vex::brakeType brakeVal);
@@ -56,3 +56,5 @@ void setClawBrake(vex::brakeType brakeVal);
 void backClampOpen();
 void backClampClose();
 void backClampDrive();
+
+void autoBalance();

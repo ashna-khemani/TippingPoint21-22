@@ -72,7 +72,7 @@ void goBack(float distance, float velocity){
     BackRightMotor.rotateFor(directionType:: rev, numberDeg,rotationUnits::deg,velocity,velocityUnits::pct);
 }
 
-void drivePI(double targetDistance) {
+void drivePD(double targetDistance) {
   // Brain.Screen.print("HEY BESTIE UWU");
   double motorspeed = 0, currentDistance = 0,
          error = (targetDistance - currentDistance), errorSum = 0, deltaE = 0,
