@@ -360,16 +360,15 @@ void conveyorBeltBackDrive(){
 // CLAW FUNCTIONS
 void clawOpen(){
   Claw.setStopping(hold);
-  Claw.spin(fwd, 100, pct);
-  wait(600, msec);
-  Claw.stop();
+  Claw.rotateFor(89, rotationUnits::deg, 100, velocityUnits::pct, false);
 }
 
 void clawClose(){
   Claw.setStopping(hold);
-  Claw.spin(directionType::rev, 100, velocityUnits::pct); 
-  wait(600, msec);
-  Claw.stop();
+  Claw.rotateFor(-89, rotationUnits::deg, 100, velocityUnits::pct, false);
+
+//  Claw.spin(directionType::rev, 100, velocityUnits::pct); 
+//  wait(600, msec);
 }
 
 bool ClawIsOpen = true; // Claw is open at beginning of program
@@ -395,12 +394,10 @@ void setClawBrake(vex::brakeType brakeVal){
 // Back Clamp Pneumatic Code
 void backClampOpen(){
   BackClamp.set(false);
-  wait(50, msec);
 }
 
 void backClampClose(){  // Pass air into piston to close
   BackClamp.set(true);
-  wait(50, msec);
 }
 
 void backClampDrive(){

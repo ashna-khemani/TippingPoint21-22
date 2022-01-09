@@ -67,7 +67,7 @@ void pre_auton(void) {
 
   FrontLift.setStopping(hold);
   Claw.setStopping(hold);
-
+  BackLift.setStopping(hold);
 
   // Select Auton from Menu
   Brain.Screen.setFont(fontType::mono20);
@@ -89,8 +89,8 @@ void pre_auton(void) {
   mainControl.ButtonR2.pressed(frontLiftDownDrive);
   mainControl.ButtonX.pressed(clawDrive);
 
-  mainControl.ButtonUp.pressed(conveyorBeltFwdDrive);
-  mainControl.ButtonDown.pressed(conveyorBeltBackDrive);
+  mainControl.ButtonL1.pressed(conveyorBeltFwdDrive);
+  mainControl.ButtonL2.pressed(conveyorBeltBackDrive);
 
 
   secondCtrl.ButtonR1.pressed(backLiftUpDrive);
@@ -99,9 +99,6 @@ void pre_auton(void) {
   secondCtrl.ButtonX.pressed(backClampDrive);
 
   
-
-
-
   // Inertial Sensor setup
   int limitLoop = 0;
   InertialSensor.calibrate();
@@ -161,7 +158,7 @@ void usercontrol(void) {
   int leftPwr, rightPwr;
   while (1) {
     fwd = (filter(mainControl.Axis3.position()) - filter(secondCtrl.Axis3.position()) * AVAS_TURN_WEIGHT) * DRIVE_WEIGHT;
-    trn = (filter(mainControl.Axis1.position()) + filter(secondCtrl.Axis1.position())) * TURN_WEIGHT;
+    trn = (filter(mainControl.Axis1.position()) + filter(secondCtrl.Axis1.position()) * AVAS_TURN_WEIGHT) * TURN_WEIGHT;
     leftPwr = (fwd + trn);
     rightPwr = (fwd - trn);
 

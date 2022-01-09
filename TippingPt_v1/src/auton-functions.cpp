@@ -5,15 +5,17 @@
 
 
 void NGoalInFront(){
-  slideFwd(45, 100);
+  drivePI(45);
   clawClose();
+  wait(200, msec);
 
   slideBackNonBlock(36, 100);
 }
 
 void NGoalInFrontL(){
-  slideFwd(49.5, 100);
+  drivePI(49.5);
   clawClose();
+  wait(200, msec);
 
   slideBackNonBlock(36, 100);
 }
@@ -23,13 +25,13 @@ void NGoalAndRAWP(){
 
   // Get NGoal
   drivePI(49);
-  Claw.setBrake(hold);
   clawClose();
+  wait(200, msec);
   drivePI(-25); // Aligns to ownG
   backLiftUpNonBlocking(95);
   turnLeft(90);
   clawOpen();
-  wait(10, msec);
+  wait(200, msec);
   alignToHeading(270);
   
 
@@ -43,7 +45,7 @@ void NGoalAndRAWP(){
   // Drag it out
   goFwd(17, 40);
   backLiftUp(10); // To pop the ring out
-  wait(2000, msec);
+  wait(1000, msec);
 
   // Let go
   backLiftUp(40);
