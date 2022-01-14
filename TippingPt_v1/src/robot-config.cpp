@@ -25,11 +25,13 @@ digital_out BackClamp = digital_out(Brain.ThreeWirePort.C);
 
 controller mainControl = controller(primary);
 controller secondCtrl = controller(partner);
+
 vex::inertial InertialSensor = vex::inertial(vex::PORT8);
+
 motor_group leftDrive = motor_group( FrontLeftMotor, BackLeftMotor );
 motor_group rightDrive = motor_group( FrontRightMotor, BackRightMotor );
 // define the drivetrain
-// this one is a smart drive which uses the InertinalSensor
+// this one is a smart drive which uses the InertialSensor
 // gyro and all motors were defined using graphical config
 // we have 4 inch wheels
 // drive is 14 inches wide between the left and right wheels

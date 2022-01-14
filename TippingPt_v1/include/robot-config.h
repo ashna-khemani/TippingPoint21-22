@@ -1,5 +1,3 @@
-//#include "vex.h"
-
 using namespace vex;
 using signature = vision::signature;
 using code = vision::code;
@@ -8,7 +6,6 @@ using code = vision::code;
 extern brain  Brain;
 
 // VEXcode device constructors
-
 extern motor BackLeftMotor;
 extern motor BackRightMotor;
 extern motor FrontLeftMotor;
@@ -25,7 +22,9 @@ extern digital_out BackClamp;
 
 extern controller mainControl;
 extern controller secondCtrl;
+
 extern vex::inertial InertialSensor;
+
 extern motor_group   leftDrive;
 extern motor_group   rightDrive;
 extern smartdrive    robotDrive;

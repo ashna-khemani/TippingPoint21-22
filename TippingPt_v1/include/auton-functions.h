@@ -1,7 +1,7 @@
-void NGoalInFront();
-void NGoalInFrontL();
+void NGoalInFront();    // Right
+void NGoalInFrontL();   // Longer (for left side)
 
-// Right (AWP)
+// Right AWP
 void NGoalAndRAWP();
 
 // First Skills auton program

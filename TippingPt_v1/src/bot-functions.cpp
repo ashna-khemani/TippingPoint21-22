@@ -4,14 +4,6 @@
 
 // hey XD if you need to put more ints here do 'extern int IDK LOL;' in bot-functions.h -- declare them using 'extern' in header file
 
-
-void setDrivetoBrake(void){
-    BackLeftMotor.setStopping(vex::brakeType::brake);
-    FrontLeftMotor.setStopping(vex::brakeType::brake);
-    BackRightMotor.setStopping(vex::brakeType::brake);
-    FrontRightMotor.setStopping(vex::brakeType::brake);
-}
-
 void setDrivetoBrakeType(vex::brakeType brakeValue){
     BackLeftMotor.setStopping(brakeValue);
     FrontLeftMotor.setStopping(brakeValue);
@@ -228,8 +220,8 @@ void alignToHeading(float targetHeading){
 
 
 
-// Front MoGo Lift Functions  
-void setFrontLiftBrake(vex::brakeType brakeVal){ 
+// Front MoGo Lift Functions
+void setFrontLiftBrake(vex::brakeType brakeVal){
   FrontLift.setStopping(brakeVal);
 }
 
@@ -367,7 +359,7 @@ void clawClose(){
   Claw.setStopping(hold);
   Claw.rotateFor(-50, rotationUnits::deg, 100, velocityUnits::pct, false);
 
-//  Claw.spin(directionType::rev, 100, velocityUnits::pct); 
+//  Claw.spin(directionType::rev, 100, velocityUnits::pct);
 //  wait(600, msec);
 }
 
@@ -404,7 +396,7 @@ void backClampDrive(){
   if (BackClamp.value() == 0){  // If open, make it close
     backClampClose();
   }
-  else{ // If closed, make it open 
+  else{ // If closed, make it open
     backClampOpen();
   }
 }
@@ -446,7 +438,7 @@ void autoBalance(){
 
     if (fabs(error) > maxAllowedError) {
       errorTimer.clear();
-    } 
+    }
     else {
       if (errorTimer.time() > errorTimerMax) {
         timerExpired = true;
