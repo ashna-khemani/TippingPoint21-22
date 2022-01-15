@@ -54,13 +54,25 @@ void NGoalAndRAWP(){
 }
 
 void Skills_1(){
+  InertialSensor.setHeading(270, deg);  // Robot starts facing 270
 
-  //Setup and grab Red Mogo
+  // Get ownG with back clamp
+  drivePD(-6);
   backClampClose();
-  drivePD(6);
+
+  // Face NGoal
+  drivePD(12);
+  turnRight(90); alignToHeading(0);
+
+  // Approach and lift NGoal
+  drivePD(40);
   clawClose();
-  wait(200, msec);
-  drivePD(-12); // Aligns to ownG
+  frontLiftUp(70);
+
+  // Approach platform
+  turnRight(45); alignToHeading(45);
+  drivePD(68);
+
 
 }
 
