@@ -32,7 +32,6 @@ motor_group leftDrive = motor_group( FrontLeftMotor, BackLeftMotor );
 motor_group rightDrive = motor_group( FrontRightMotor, BackRightMotor );
 // define the drivetrain
 // this one is a smart drive which uses the InertialSensor
-// gyro and all motors were defined using graphical config
 // we have 4 inch wheels
 // drive is 14 inches wide between the left and right wheels
 // drive has a 10 inch wheelbase (between fron and back wheel axles)
@@ -40,15 +39,5 @@ smartdrive    robotDrive = smartdrive( leftDrive, rightDrive, InertialSensor,4*3
 
 
 
-// VEXcode generated functions
-
-
-
-/**
- * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
- *
- * This should be called at the start of your int main function.
- */
 void vexcodeInit( void ) {
-  // nothing to initialize
 }

@@ -36,6 +36,9 @@ void frontLiftDownDrive(void);
 
 void frontLiftUp(double degrees);
 void frontLiftDown(double degrees);
+void frontLiftUpAuto();
+void frontLiftDownAuto();
+
 
 
 // Back Lift function declarations
