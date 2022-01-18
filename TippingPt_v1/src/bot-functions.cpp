@@ -69,7 +69,7 @@ void drivePD(double targetDistance) {
   double motorspeed = 0, currentDistance = 0,
          error = (targetDistance - currentDistance), errorSum = 0, deltaE = 0,
          lastError = 0, maxAllowedError = 1.0, errorTimerMax = 50;
-  double kP = 10, kI = 0.0, kD = 15; //working 8,0,20
+  double kP = 10, kI = 0.0, kD = 17; // 15 
   bool timerExpired = false;
   timer errorTimer = timer();
   errorTimer.clear();

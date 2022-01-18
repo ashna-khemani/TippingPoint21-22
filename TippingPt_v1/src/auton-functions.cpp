@@ -55,13 +55,55 @@ void NGoalAndRAWP(){
 
 void Skills_1(){
   InertialSensor.setHeading(270, deg);  // Robot starts facing 270
+  wait(100, msec);
 
   drivePD(-2.5);
-  backClampClose();
-  turnLeft(90); alignToHeading(0);
+  backClampClose(); wait(10, msec);
 
-  drivePD(50);
+  backLiftUpNonBlocking(80);
+  wait(10, msec);
+
+  drivePD(-2.25);
+  wait(10, msec);
+
+  turnRightSlow(90); 
+  alignToHeading(0);
+
+  drivePD(43); 
+  wait(100,msec);
   clawClose();
+
+  frontLiftUp(5);
+
+  drivePD(68);
+
+  frontLiftDown(5);
+  clawOpen();
+
+  drivePD(-10);
+
+  turnRight(135); alignToHeading(135);
+
+  drivePD(-12);
+
+  backLiftDown(85);
+  backClampOpen();
+
+  drivePD(12);
+  turnLeft(45); alignToHeading(90);
+
+  drivePD(-16);
+
+  backClampClose(); wait(200, msec);
+  backLiftUp(85);
+
+  drivePD(16);
+
+
+}
+
+void Skills_Push(){
+
 }
 
 // Idea: -- Master Plan

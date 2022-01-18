@@ -25,6 +25,7 @@ void slideBackNonBlock(float distance, float velocity);
 
 void turnLeft(float degree);
 void turnRight(float degree);
+void turnRightSlow(float degree);
 void alignToHeading(float targetHeading);
 void drivePD(double targetDistance);
 
