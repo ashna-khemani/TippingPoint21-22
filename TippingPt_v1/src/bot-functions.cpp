@@ -248,20 +248,21 @@ void frontLiftDownDrive(){
   }
 }
 
+int rex = 100;
 void frontLiftUp(double degrees){
-  FrontLift.rotateFor(degrees*84/7, rotationUnits::deg, 85, velocityUnits::pct, false);
+  FrontLift.rotateFor(degrees*84/12, rotationUnits::deg, 85, velocityUnits::pct, false);
 }
 
 void frontLiftDown(double degrees){
-  FrontLift.rotateFor(-degrees*84/7, rotationUnits::deg, 85, velocityUnits::pct, false);
+  FrontLift.rotateFor(-degrees*84/12, rotationUnits::deg, 85, velocityUnits::pct, false);
 }
 
 void frontLiftUpAuto(){
-  frontLiftUp(475);
+  frontLiftUp(rex);
 }
 
 void frontLiftDownAuto(){
-  frontLiftDown(475);
+  frontLiftDown(rex);
 }
 
 // ------Back MoGo Lift Functions  // TODO chuck these into main preauton and header

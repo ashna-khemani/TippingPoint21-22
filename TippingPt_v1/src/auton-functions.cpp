@@ -5,7 +5,7 @@
 
 
 void NGoalInFront(){
-  drivePD(45);
+  drivePD(40);  // change to 43
   clawClose();
   wait(200, msec);
 
@@ -56,24 +56,12 @@ void NGoalAndRAWP(){
 void Skills_1(){
   InertialSensor.setHeading(270, deg);  // Robot starts facing 270
 
-  // Get ownG with back clamp
-  drivePD(-6);
+  drivePD(-2.5);
   backClampClose();
+  turnLeft(90); alignToHeading(0);
 
-  // Face NGoal
-  drivePD(12);
-  turnRight(90); alignToHeading(0);
-
-  // Approach and lift NGoal
-  drivePD(40);
+  drivePD(50);
   clawClose();
-  frontLiftUp(70);
-
-  // Approach platform
-  turnRight(45); alignToHeading(45);
-  drivePD(68);
-
-
 }
 
 // Idea: -- Master Plan
