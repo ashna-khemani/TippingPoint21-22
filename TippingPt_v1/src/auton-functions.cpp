@@ -33,7 +33,7 @@ void NGoalAndRAWP(){
   clawOpen();
   wait(200, msec);
   alignToHeading(270);
-  
+
 
   // Back into ownG
   drivePD(-11);
@@ -53,47 +53,44 @@ void NGoalAndRAWP(){
 
 }
 
-void Skills_1(){
-  InertialSensor.setHeading(270, deg);  // Robot starts facing 270
+void Skills_1(){    // Currently for pushing MGs into home zones
+  // Set initial heading (270)
+  InertialSensor.setHeading(270, deg);
   wait(100, msec);
 
+  // Lift Red MG w/ BackLift
   drivePD(-2.5);
   backClampClose(); wait(10, msec);
-
   backLiftUpNonBlocking(80);
   wait(10, msec);
 
+  // Align FrontLift to Left NGoal
   drivePD(-2.25);
   wait(10, msec);
+  turnRightSlow(90); alignToHeading(0);
 
-  turnRightSlow(90); 
-  alignToHeading(0);
-
-  drivePD(43); 
+  // Push Left NGoal to other side HZ w/ FrontLift
+  drivePD(43);
   wait(100,msec);
   clawClose();
-
   frontLiftUp(5);
-
   drivePD(68);
-
   frontLiftDown(5);
   clawOpen();
 
+  // Back into corner and drop Red MG (BackLift)
   drivePD(-10);
-
   turnRight(135); alignToHeading(135);
-
   drivePD(-12);
-
   backLiftDown(85);
   backClampOpen();
 
+  // Align BackLift to Blue MG
   drivePD(12);
   turnLeft(45); alignToHeading(90);
 
+  // Pick up Blue MG w/ BackLift
   drivePD(-16);
-
   backClampClose(); wait(200, msec);
   backLiftUp(85);
 
