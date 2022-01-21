@@ -5,7 +5,10 @@
 
 
 void NGoalInFront(){
-  drivePD(40);  // change to 43
+  drivePD(48);  // change to 43
+  wait(10, msec);
+  slideFwdNonBlock(1, 25);
+  wait(100, msec);
   clawClose();
   wait(200, msec);
 
