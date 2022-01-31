@@ -19,6 +19,7 @@ enum MenuItems{
   N_GOAL_IN_FRONT_L,
   N_GOAL_AND_R_AWP,
   SKILLS_1,
+  SKILLS_PUSH,
   NO_ACTION,
   MENU_LENGTH,
 };
@@ -28,6 +29,7 @@ char MenuList[MENU_LENGTH][20] = {
   "NGoalInFrontL",
   "NGoalAndRAWP",
   "Skills 1",
+  "SkillsPush",
   "No Action",
 
 };
@@ -87,6 +89,8 @@ void pre_auton(void) {
   // Drive buttons
   mainControl.ButtonR1.pressed(frontLiftUpDrive);
   mainControl.ButtonR2.pressed(frontLiftDownDrive);
+  mainControl.ButtonL1.pressed(frontLiftUpAuto);
+  mainControl.ButtonL2.pressed(frontLiftDownAuto);
   mainControl.ButtonX.pressed(clawDrive);
 
   mainControl.ButtonL1.pressed(conveyorBeltFwdDrive);
@@ -134,6 +138,9 @@ void autonomous(void) {
       break;
     case SKILLS_1:
       Skills_1();
+      break;
+    case SKILLS_PUSH:
+      Skills_Push();
       break;
     case NO_ACTION:
       vex::task::sleep(10000);

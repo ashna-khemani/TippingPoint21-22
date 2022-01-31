@@ -6,3 +6,4 @@ void NGoalAndRAWP();
 
 // First Skills auton program
 void Skills_1();
+void Skills_Push();

@@ -69,7 +69,7 @@ void drivePD(double targetDistance) {
   double motorspeed = 0, currentDistance = 0,
          error = (targetDistance - currentDistance), errorSum = 0, deltaE = 0,
          lastError = 0, maxAllowedError = 1.0, errorTimerMax = 50;
-  double kP = 10, kI = 0.0, kD = 15; //working 8,0,20
+  double kP = 10, kI = 0.0, kD = 17; // 15 
   bool timerExpired = false;
   timer errorTimer = timer();
   errorTimer.clear();
@@ -248,14 +248,22 @@ void frontLiftDownDrive(){
   }
 }
 
+int rex = 100;
 void frontLiftUp(double degrees){
-  FrontLift.rotateFor(degrees*84/32, rotationUnits::deg, 85, velocityUnits::pct, false);
+  FrontLift.rotateFor(degrees*84/12, rotationUnits::deg, 85, velocityUnits::pct, false);
 }
 
 void frontLiftDown(double degrees){
-  FrontLift.rotateFor(-degrees*84/32, rotationUnits::deg, 85, velocityUnits::pct, false);
+  FrontLift.rotateFor(-degrees*84/12, rotationUnits::deg, 85, velocityUnits::pct, false);
 }
 
+void frontLiftUpAuto(){
+  frontLiftUp(rex);
+}
+
+void frontLiftDownAuto(){
+  frontLiftDown(rex);
+}
 
 // ------Back MoGo Lift Functions  // TODO chuck these into main preauton and header
 void setBackLiftBrake(vex::brakeType brakeVal){ //TODO: put this in main
@@ -352,12 +360,12 @@ void conveyorBeltBackDrive(){
 // CLAW FUNCTIONS
 void clawOpen(){
   Claw.setStopping(hold);
-  Claw.rotateFor(50, rotationUnits::deg, 100, velocityUnits::pct, false);
+  Claw.rotateFor(118, rotationUnits::deg, 100, velocityUnits::pct, false);
 }
 
 void clawClose(){
   Claw.setStopping(hold);
-  Claw.rotateFor(-50, rotationUnits::deg, 100, velocityUnits::pct, false);
+  Claw.rotateFor(-118, rotationUnits::deg, 100, velocityUnits::pct, false);
 
 //  Claw.spin(directionType::rev, 100, velocityUnits::pct);
 //  wait(600, msec);
