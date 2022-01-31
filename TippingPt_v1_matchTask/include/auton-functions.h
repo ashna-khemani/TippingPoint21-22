@@ -3,9 +3,8 @@ void NGoalInFrontL();   // Longer (for left side)
 
 // Right AWP
 void NGoalAndRAWP();
+void RAWPAndMiddleGoal();
 
 // First Skills auton program
 void Skills_1();
-void Skills_Push();
-
-void Middle_goal();
+// void Skills_Push();

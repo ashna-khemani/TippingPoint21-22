@@ -124,7 +124,8 @@ void pre_auton(void) {
 void autonomous(void) {
   switch(MenuItemHighlighted){
 
-    /*case THING_FROM_MenuItems:
+    /*
+    case THING_FROM_MenuItems:
       autonFunctionName();
       break;
     case ....

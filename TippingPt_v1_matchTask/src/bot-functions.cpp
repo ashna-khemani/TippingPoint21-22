@@ -192,11 +192,11 @@ void alignToHeading(float targetHeading){
       error = error + 360;  //modulo 360
     }
 
-    if (fabs(error) > 45) {
+    //if (fabs(error) > 45) {
       // Brain.Screen.setCursor(1, 1);
       // Brain.Screen.print("aToHd c%f er%f", currentHeading, error);
     //  return;
-    }
+    //}
     setDrivetoBrakeType(brakeType::hold);
 
     while ((fabs(error) > MAX_TURNING_ERROR) && count < 3) {

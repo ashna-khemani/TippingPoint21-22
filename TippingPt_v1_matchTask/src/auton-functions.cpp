@@ -79,89 +79,7 @@ void NGoalAndRAWP(){
 
 }
 
-void Skills_1(){    // Currently for pushing MGs into home zones
-  // Set initial heading (270)
-  InertialSensor.setHeading(270, deg);
-  wait(100, msec);
-
-  // Lift Red MG w/ BackLift
-  drivePD(2); //new-flip open
-  alignToHeading(270);
-  wait(10,msec);
-  drivePD(-4.5); //-2.5->-5
-  backClampClose(); wait(10, msec);
-  backLiftUpNonBlocking(80);
-  wait(10, msec);
-  alignToHeading(270); wait(10,msec); //testing
-
-  // Align FrontLift to Left NGoal
-  drivePD(-5); //-2.25->-5->4 4->5
-  wait(10, msec);
-  turnRightSlow(90); wait(3,sec); alignToHeading(0);
-
-  wait(3,sec); //new
-  // Push Left NGoal to other side HZ w/ FrontLift
-  drivePD(40); //43->46
-  wait(5,sec); //new
-  clawClose();
-  wait(10,sec); //new
-  alignToHeading(0); wait(3,sec);
- // frontLiftUp(5);
-  drivePD(65); //68-65
-  frontLiftDown(5);
-  clawOpen();
-
-  // Back into corner and drop Red MG (BackLift)
-  drivePD(-10);
-  turnRight(135); alignToHeading(135);
-  wait(10,msec);
-  drivePD(-12);
-  backLiftDown(85);
-  backClampOpen();
-
-  // Align BackLift to Blue MG
-  drivePD(12);
-  turnLeft(45); alignToHeading(90);
-
-  // Pick up Blue MG w/ BackLift
-  drivePD(-16);
-  backClampClose(); wait(200, msec);
-  alignToHeading(90); wait(10,msec); //testing
-  backLiftUpNonBlocking(85); wait(10,msec);
-
-  drivePD(16);
-  turnRight(45);
-  alignToHeading(135);
-  wait(10,msec);
-  
-  //pick up big
-  drivePD(60);
-  wait(10,msec);
-  clawClose();
-
-  turnRight(10);
-  alignToHeading(145); wait(10,msec);
-
-  drivePD(60);
-  wait(10,sec); //new
-  clawOpen();
-
-  drivePD(-14);
-  turnLeft(45);
-  alignToHeading(90); wait(10,msec);
-  backLiftDown(85);
-  backClampOpen(); wait(10,msec);
-
-  drivePD(15);
-  clawClose();
-  wait(10,msec);
-
-  drivePD(-12); //...
-
-
-}
-
-void Middle_goal(){
+void RAWPAndMiddleGoal(){
    backClampClose();
 
   // Get NGoal
@@ -205,12 +123,93 @@ void Middle_goal(){
   frontLiftUp(20);
   goBack(45, 50);
   turnLeft(60);
- 
-}
-
-void Skills_Push(){
 
 }
+
+void Skills_1(){    // Currently for pushing MGs into home zones
+  // Set initial heading (270)
+  InertialSensor.setHeading(270, deg);
+  wait(100, msec);
+
+  // AK 1/31: Can we remove some of the alignToHeading's so we can move faster? delete this if it was tested and necessary lol
+  // Lift Red MG w/ BackLift
+  drivePD(2); // flip open
+  alignToHeading(270);
+  wait(10,msec);
+  drivePD(-4.5); //-2.5->-5
+  backClampClose(); wait(10, msec);
+  backLiftUpNonBlocking(80);
+  wait(10, msec);
+  alignToHeading(270); wait(10,msec); //testing
+
+  // Align FrontLift to Left NGoal
+  drivePD(-5); //-2.25->-5->4 4->5
+  wait(10, msec);
+  turnRightSlow(90); alignToHeading(0);
+
+  // Push Left NGoal to other side HZ w/ FrontLift
+  drivePD(40); //43->46
+  clawClose();
+  alignToHeading(0);
+ // frontLiftUp(5);
+  drivePD(65); //68-65
+  // frontLiftDown(5);
+  clawOpen();
+
+  // Back into corner and drop Red MG (BackLift)
+  drivePD(-10);
+  turnRight(135); alignToHeading(135);
+  wait(10,msec);
+  drivePD(-12);
+  backLiftDown(85);
+  backClampOpen();
+
+  // Align BackLift to Blue MG
+  drivePD(12);
+  turnLeft(45); alignToHeading(90);
+
+  // Pick up Blue MG w/ BackLift
+  drivePD(-16);
+  backClampClose(); wait(200, msec);
+  alignToHeading(90); wait(10,msec); //testing
+  backLiftUpNonBlocking(85); wait(10,msec);
+
+  drivePD(16);
+  turnRight(45);
+  alignToHeading(135);
+  wait(10,msec);
+
+  //pick up big
+  drivePD(60);
+  wait(10,msec);
+  clawClose();
+
+  turnRight(10);
+  alignToHeading(145); wait(10,msec);
+
+  drivePD(60);
+  clawOpen();
+
+  drivePD(-14);
+  turnLeft(45);
+  alignToHeading(90); wait(10,msec);
+  backLiftDown(85);
+  backClampOpen(); wait(10,msec);
+
+  drivePD(15);
+  clawClose();
+  wait(10,msec);
+
+  drivePD(-12); //...
+
+
+}
+
+
+
+// void Skills_Push(){
+    // move Skills_1 (currently for pushing) here once we move on to a platforming skills
+// }
 
 // Idea: -- Master Plan
   // deploy back lift
