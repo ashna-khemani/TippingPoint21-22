@@ -129,14 +129,18 @@ void RAWPAndMiddleGoal(){
 void Skills_1(){    // Currently for pushing MGs into home zones
   // Set initial heading (270)
   InertialSensor.setHeading(270, deg);
-  wait(100, msec);
+  wait(10, msec);
 
   // AK 1/31: Can we remove some of the alignToHeading's so we can move faster? delete this if it was tested and necessary lol
   // Lift Red MG w/ BackLift
+#if 0
   drivePD(2); // flip open
   alignToHeading(270);
   wait(10,msec);
   drivePD(-4.5); //-2.5->-5
+
+#endif
+  drivePD(-2.5); //-2.5->-5
   backClampClose(); wait(10, msec);
   backLiftUpNonBlocking(80);
   wait(10, msec);
@@ -145,14 +149,22 @@ void Skills_1(){    // Currently for pushing MGs into home zones
   // Align FrontLift to Left NGoal
   drivePD(-5); //-2.25->-5->4 4->5
   wait(10, msec);
-  turnRightSlow(90); alignToHeading(0);
+  turnRightSlow(90); 
+  wait(3000,msec);
+  alignToHeading(0);
 
   // Push Left NGoal to other side HZ w/ FrontLift
-  drivePD(40); //43->46
+  drivePD(20);
+  backLiftDownNonBlocking(80);
+  drivePD(20); //43->46
+  slideFwdNonBlock(4, 25);
+  wait(500,msec);
   clawClose();
   alignToHeading(0);
  // frontLiftUp(5);
-  drivePD(65); //68-65
+  drivePD(60); //68-65
+  slideFwdNonBlock(5, 25);
+  wait(500, msec);
   // frontLiftDown(5);
   clawOpen();
 
@@ -161,7 +173,6 @@ void Skills_1(){    // Currently for pushing MGs into home zones
   turnRight(135); alignToHeading(135);
   wait(10,msec);
   drivePD(-12);
-  backLiftDown(85);
   backClampOpen();
 
   // Align BackLift to Blue MG
@@ -207,9 +218,9 @@ void Skills_1(){    // Currently for pushing MGs into home zones
 
 
 
-// void Skills_Push(){
+void Skills_Push(){
     // move Skills_1 (currently for pushing) here once we move on to a platforming skills
-// }
+}
 
 // Idea: -- Master Plan
   // deploy back lift

@@ -3,7 +3,7 @@
 #define SLOW_TURNING_SPEED  20
 #define WHEELDIAMETER       4.0      // Wheel diameter in inches
 #define WHEELCIRCUMFERENCE  (WHEELDIAMETER * 3.145)
-#define REVTOANGLERIGHT      (1.0/100)   //1 rotations to turn 93.5 degrees
+#define REVTOANGLERIGHT      (1.0/105)   //1 rotations to turn 93.5 degrees
 #define REVTOANGLELEFT      (1.0/105)   //1 rotations to turn 91.25 degrees 87.5 ->85
 
 

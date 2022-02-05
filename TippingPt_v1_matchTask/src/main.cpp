@@ -140,7 +140,7 @@ void autonomous(void) {
       NGoalAndRAWP();
       break;
     case MIDDLE_GOAL:
-      Middle_goal();
+      RAWPAndMiddleGoal();
       break;
     case SKILLS_1:
       Skills_1();
