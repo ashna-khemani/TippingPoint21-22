@@ -109,6 +109,82 @@ void drivePD(double targetDistance) {
   FrontLeftMotor.stop(brake);
   BackRightMotor.stop(brake);
 }
+/*  Splitting up DrivePD
+void drivePD_Right(double targetDistance) {
+  // Brain.Screen.print("HEY BESTIE UWU");
+  double motorspeed = 0, currentDistance = 0,
+         error = (targetDistance - currentDistance), errorSum = 0, deltaE = 0,
+         lastError = 0, maxAllowedError = 1.0, errorTimerMax = 50;
+  double kP = 5, kI = 0.08, kD = 0; // 15, 1/20: 10 0 17 ->5 0.05 0, actually PI again lmao kp=5,ki=0.05,kd=0 trying kp.08
+  bool timerExpired = false;
+  timer errorTimer = timer();
+  errorTimer.clear();
+  FrontRightMotor.resetRotation(); // used front right motor to control driving distance
+
+  while ((fabs(error) > maxAllowedError) && (timerExpired == false)) {
+    currentDistance = ((FrontRightMotor.rotation(rotationUnits::deg)) / 360) * WHEELCIRCUMFERENCE;
+    error = targetDistance - currentDistance;
+    errorSum += error;
+    deltaE = (error - lastError) / 5000;
+    //deltaE = (lastError - error)/-500? How do u get the value of the error
+    //at a given time IN EQUAL INTERVALS)??
+    motorspeed = (error * kP) + (errorSum * kI) + (deltaE * kD);
+
+    FrontRightMotor.spin(directionType::fwd, motorspeed, velocityUnits::pct);
+    BackRightMotor.spin(directionType::fwd, motorspeed, velocityUnits::pct);
+
+    lastError = error;
+
+    if (fabs(error) > maxAllowedError) {
+      errorTimer.clear();
+    } else {
+      if (errorTimer.time() > errorTimerMax) {
+        timerExpired = true;
+      }
+    }
+    vex::task::sleep(20);
+  }
+  FrontRightMotor.stop(brake);
+  BackRightMotor.stop(brake);
+}
+void drivePD_Left(double targetDistance) {
+  // Brain.Screen.print("HEY BESTIE UWU");
+  double motorspeed = 0, currentDistance = 0,
+         error = (targetDistance - currentDistance), errorSum = 0, deltaE = 0,
+         lastError = 0, maxAllowedError = 1.0, errorTimerMax = 50;
+  double kP = 5, kI = 0.08, kD = 0; // 15, 1/20: 10 0 17 ->5 0.05 0, actually PI again lmao kp=5,ki=0.05,kd=0 trying kp.08
+  bool timerExpired = false;
+  timer errorTimer = timer();
+  errorTimer.clear();
+  FrontLeftMotor.resetRotation(); // used front right motor to control driving distance
+
+  while ((fabs(error) > maxAllowedError) && (timerExpired == false)) {
+    currentDistance = ((FrontLeftMotor.rotation(rotationUnits::deg)) / 360) * WHEELCIRCUMFERENCE;
+    error = targetDistance - currentDistance;
+    errorSum += error;
+    deltaE = (error - lastError) / 5000;
+    //deltaE = (lastError - error)/-500? How do u get the value of the error
+    //at a given time IN EQUAL INTERVALS)??
+    motorspeed = (error * kP) + (errorSum * kI) + (deltaE * kD);
+
+    FrontLeftMotor.spin(directionType::fwd, motorspeed, velocityUnits::pct);
+    BackLeftMotor.spin(directionType::fwd, motorspeed, velocityUnits::pct);
+
+    lastError = error;
+
+    if (fabs(error) > maxAllowedError) {
+      errorTimer.clear();
+    } else {
+      if (errorTimer.time() > errorTimerMax) {
+        timerExpired = true;
+      }
+    }
+    vex::task::sleep(20);
+  }
+  FrontLeftMotor.stop(brake);
+  BackLeftMotor.stop(brake);
+}
+*/
 
 void stopDriveTrain(void) {
   BackLeftMotor.stop();
