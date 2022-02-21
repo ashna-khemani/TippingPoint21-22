@@ -110,8 +110,8 @@ void pre_auton(void) {
   // Drive buttons
   mainControl.ButtonR1.pressed(frontLiftUpDrive);
   mainControl.ButtonR2.pressed(frontLiftDownDrive);
-  mainControl.ButtonL1.pressed(frontLiftUpAuto);
-  mainControl.ButtonL2.pressed(frontLiftDownAuto);
+  mainControl.ButtonL1.pressed(frontLiftUpAutoEnc);
+  mainControl.ButtonL2.pressed(frontLiftDownAutoEnc);
   mainControl.ButtonX.pressed(clawDrive);
 
   mainControl.ButtonL1.pressed(conveyorBeltFwdDrive);

@@ -19,6 +19,7 @@ extern motor ConveyorBelt;
 extern motor Claw;
 
 extern digital_out BackClamp;
+extern encoder liftEncoder;
 
 extern controller mainControl;
 extern controller secondCtrl;

@@ -412,6 +412,37 @@ void frontLiftDownDegreesAuto(double degrees){
   
 }
 
+void frontLiftUpAutoEnc(){
+  double target = 30;
+  liftEncoder.setPosition(0, deg);
+  Brain.Screen.print("LE: %f", liftEncoder.position(rotationUnits::deg));
+  FrontLift.spin(directionType::fwd, 100, velocityUnits::pct);
+  wait(200,msec);
+  Brain.Screen.newLine();
+  Brain.Screen.print("LE: %f", liftEncoder.position(rotationUnits::deg));
+  wait(100, msec);
+  Brain.Screen.newLine();
+  Brain.Screen.print("LE: %f", liftEncoder.position(rotationUnits::deg));
+
+  wait(100000, msec);
+
+  while (liftEncoder.position(deg) < target){
+    wait(50, msec);
+  }
+
+  FrontLift.stop();
+}
+
+void frontLiftDownAutoEnc(){
+  double target = -30;
+  liftEncoder.resetRotation();
+  FrontLift.spin(directionType::rev, 100, velocityUnits::pct);
+  while (liftEncoder.rotation(deg) > target){
+    wait(50, msec);
+  }
+  FrontLift.stop();
+}
+
 // ------Back MoGo Lift Functions  // TODO chuck these into main preauton and header
 void setBackLiftBrake(vex::brakeType brakeVal){ //TODO: put this in main
   BackLift.setBrake(brakeVal);

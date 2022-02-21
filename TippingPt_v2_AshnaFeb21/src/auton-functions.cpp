@@ -80,33 +80,33 @@ void NGoalAndRAWP(){
 }
 void Skills_Plat(){
   // Set initial heading (270)
-//  InertialSensor.setHeading(270, deg);
-//  wait(100, msec);
+  //  InertialSensor.setHeading(270, deg);
+  //  wait(100, msec);
 
-#if 0 // CHange this to #if 0 after testing. it is only for debug
+  #if 0 // CHange this to #if 0 after testing. it is only for debug
 
-drivePD(24);
-wait(2000, msec);
-drivePD(-24);
-wait(2000, msec);
-turnRight(90);
-wait(2000, msec);
-alignToHeading(90);
-wait(2000, msec);
-turnLeftSlow(90);
-wait(2000, msec);
-alignToHeading(0);
-wait(2000, msec);
-turnLeft(90);
-wait(2000, msec);
-alignToHeading(270);
-wait(2000, msec);
-turnLeftSlow(90);
-wait(2000, msec);
-alignToHeading(180);
-wait(5000, msec);
+    drivePD(24);
+    wait(2000, msec);
+    drivePD(-24);
+    wait(2000, msec);
+    turnRight(90);
+    wait(2000, msec);
+    alignToHeading(90);
+    wait(2000, msec);
+    turnLeftSlow(90);
+    wait(2000, msec);
+    alignToHeading(0);
+    wait(2000, msec);
+    turnLeft(90);
+    wait(2000, msec);
+    alignToHeading(270);
+    wait(2000, msec);
+    turnLeftSlow(90);
+    wait(2000, msec);
+    alignToHeading(180);
+    wait(5000, msec);
 
-#endif
+  #endif
 
 
   drivePD(-4); //-2.5->-5
@@ -222,17 +222,17 @@ wait(5000, msec);
   alignToHeading(270);
   wait(10, msec);
 
-// Forget the platform for now  frontLiftUpAuto();
+  // Forget the platform for now  frontLiftUpAuto();
   drivePD(10);
   
-//  turnLeft(90);
-//  slideFwdNonBlock(2, 30);
-//  wait(500, msec);
+  //  turnLeft(90);
+  //  slideFwdNonBlock(2, 30);
+  //  wait(500, msec);
   clawOpen();       // drop the blue goal
-//  wait(400, msec);
-//  drivePD(-2);
-//  turnRight(30);
-//  wait(10, msec);
+  //  wait(400, msec);
+  //  drivePD(-2);
+  //  turnRight(30);
+  //  wait(10, msec);
   drivePD(-25);
   wait(10, msec);
   slideBackNonBlock(4, 30);
@@ -305,33 +305,34 @@ wait(5000, msec);
 }
 
 void Skills_Plat2(){
-// Set initial heading (270)
+  // Set initial heading (270)
 
-InertialSensor.setHeading(270, deg);
-wait(100, msec);
-#if 0
-drivePDStraight(48);
-wait(5000, msec);
-drivePDStraight(-24);
-wait(2000, msec);
-turnRight(90);
-wait(2000, msec);
-alignToHeading(90);
-wait(2000, msec);
-turnLeftSlow(90);
-wait(2000, msec);
-alignToHeading(0);
-wait(2000, msec);
-turnLeft(90);
-wait(2000, msec);
-alignToHeading(270);
-wait(2000, msec);
-turnLeftSlow(90);
-wait(2000, msec);
-alignToHeading(180);
-wait(5000, msec);
-return;
-#endif
+  InertialSensor.setHeading(270, deg);
+  wait(100, msec);
+
+  #if 0
+    drivePDStraight(48);
+    wait(5000, msec);
+    drivePDStraight(-24);
+    wait(2000, msec);
+    turnRight(90);
+    wait(2000, msec);
+    alignToHeading(90);
+    wait(2000, msec);
+    turnLeftSlow(90);
+    wait(2000, msec);
+    alignToHeading(0);
+    wait(2000, msec);
+    turnLeft(90);
+    wait(2000, msec);
+    alignToHeading(270);
+    wait(2000, msec);
+    turnLeftSlow(90);
+    wait(2000, msec);
+    alignToHeading(180);
+    wait(5000, msec);
+    return;
+  #endif
 
 
   drivePD(-4); //-2.5->-5
@@ -347,12 +348,12 @@ return;
   drivePD(12); //-2.25->-5-> 4 4->5 //-5->-5.5-7
   wait(50, msec);
   turnRightSlow(90); 
-  wait(50,msec);
+  wait(150,msec);
   alignToHeading(0);
   wait(50, msec);
   // Push Left NGoal to other side HomeZone w/ FrontLift
   drivePD(36); //2/13 36->38
-  wait(50,msec);
+  wait(150,msec);
   turnRightSlow(30);
   wait(50,msec);
   alignToHeading(30);
@@ -381,10 +382,10 @@ return;
   wait(500, msec);
   turnLeft(30);
 
-//  slideBackNonBlock(1, 25);
-//  wait(100, msec);
+  //  slideBackNonBlock(1, 25);
+  //  wait(100, msec);
   frontLiftDown(15);
-//  slideFwdNonBlock(2, 25);
+  //  slideFwdNonBlock(2, 25);
   wait(300, msec);
   clawOpen();
   wait(400,msec);
@@ -405,22 +406,9 @@ return;
   backClampOpen();
   wait(50,msec);
   
-  //get blue
-  drivePD(25);
-  wait(10, msec);
-  // turnRight(90);
-  // wait(10, msec);
-  // alignToHeading(0);
-  // wait(10, msec);
-  // drivePD(6);
-  // turnLeft(90);
-  // wait(10, msec);
-  alignToHeading(270);
-  wait(10, msec);
-  drivePD(18);  
-
-  slideFwd(6, 30);
-  wait(500,msec);
+  drivePD(50);
+  slideFwdNonBlock(10, 30);
+  // wait(500,msec);
   clawClose();  // non-blocking so need time to close
   wait(500,msec);
   alignToHeading(270);
@@ -428,7 +416,7 @@ return;
   frontLiftUp(10);
   
   //go get big
-  drivePD(-20);
+  drivePD(-17); //20
   wait(50,msec);
   turnRight(45);
   wait(50,msec);
