@@ -15,6 +15,7 @@
 
 // Global variable
 extern int ClawMotorRunning;
+extern bool ArmUpMsg;
 
 // Drive function declarations
 void stopDriveTrain(void);
@@ -44,9 +45,11 @@ void frontLiftUp(double degrees);
 void frontLiftDown(double degrees);
 void frontLiftUpAuto();
 void frontLiftDownAuto();
-void frontLiftDownDegreesAuto(double degrees);
 void frontLiftUpAutoEnc();
 void frontLiftDownAutoEnc();
+
+void armUpLim(void);
+
 
 
 // Back Lift function declarations

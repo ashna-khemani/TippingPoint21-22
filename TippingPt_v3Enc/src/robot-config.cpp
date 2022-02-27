@@ -23,6 +23,7 @@ motor Claw = motor(PORT9, ratio18_1, false);
 
 digital_out BackClamp = digital_out(Brain.ThreeWirePort.F);
 encoder liftEncoder = encoder(Brain.ThreeWirePort.B);
+limit armLim = limit(Brain.ThreeWirePort.E);
 
 controller mainControl = controller(primary);
 controller secondCtrl = controller(partner);

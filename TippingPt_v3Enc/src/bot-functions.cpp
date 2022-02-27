@@ -5,6 +5,7 @@
 
 // hey XD if you need to put more ints here do 'extern int IDK LOL;' in bot-functions.h -- declare them using 'extern' in header file
 
+// DRIVE FUNCTIONS
 void setDrivetoBrakeType(vex::brakeType brakeValue){
     BackLeftMotor.setStopping(brakeValue);
     FrontLeftMotor.setStopping(brakeValue);
@@ -403,13 +404,8 @@ void frontLiftUpAuto(){
   frontLiftUp(rex);
 }
 
-void frontLiftDownAuto(){
+void frontLiftDownAuto(){ //
   frontLiftDown(rex);
-}
-
-void frontLiftDownDegreesAuto(double degrees){
-  frontLiftDown(degrees);
-  
 }
 
 void frontLiftUpAutoEnc(){
@@ -441,6 +437,10 @@ void frontLiftDownAutoEnc(){
     wait(50, msec);
   }
   FrontLift.stop();
+}
+
+void armUpLim(){ //
+  ArmUpMsg = true;
 }
 
 // ------Back MoGo Lift Functions  // TODO chuck these into main preauton and header

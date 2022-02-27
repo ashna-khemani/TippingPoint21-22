@@ -158,7 +158,7 @@ void Skills_Plat(){
   wait(400,msec);
   drivePD(-4); //-3->-4 
   wait(50,msec);
-  frontLiftDownDegreesAuto(85);
+  frontLiftDown(85);
 
   //head to blue
   turnLeft(90 - 17); 
@@ -394,7 +394,7 @@ void Skills_Plat2(){
   frontLiftUp(10);
   drivePD(-4); //-3->-4 
   wait(50,msec);
-  frontLiftDownDegreesAuto(95);
+  frontLiftDown(95);
 
   //head to blue
   turnLeft(90 - 30); 

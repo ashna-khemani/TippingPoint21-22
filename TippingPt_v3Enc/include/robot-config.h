@@ -20,6 +20,7 @@ extern motor Claw;
 
 extern digital_out BackClamp;
 extern encoder liftEncoder;
+extern limit armLim;
 
 extern controller mainControl;
 extern controller secondCtrl;

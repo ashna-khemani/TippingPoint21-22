@@ -5,6 +5,7 @@
 using namespace vex;
 competition Competition;
 
+bool ArmUpMsg = false;
 
 // ------------- Auton Menu Setup -------------
 int MenuItemSelected = 0;
@@ -110,8 +111,8 @@ void pre_auton(void) {
   // Drive buttons
   mainControl.ButtonR1.pressed(frontLiftUpDrive);
   mainControl.ButtonR2.pressed(frontLiftDownDrive);
-  mainControl.ButtonL1.pressed(frontLiftUpAutoEnc);
-  mainControl.ButtonL2.pressed(frontLiftDownAutoEnc);
+  mainControl.ButtonL1.pressed(armUpLim);
+  mainControl.ButtonL2.pressed(frontLiftDownAuto);
   mainControl.ButtonX.pressed(clawDrive);
 
   mainControl.ButtonL1.pressed(conveyorBeltFwdDrive);
@@ -205,6 +206,31 @@ int ClawMotorTask(void){
   }
 }
 
+int ArmTask(void){
+  int i = 0;
+  while (true){
+    if(!armLim.pressing() && ArmUpMsg){
+      FrontLift.spin(fwd, 100, pct);
+      i = 0;
+
+      while (!armLim.pressing() && i<300){
+        i++;
+        wait(10, msec);
+      }
+
+      if (!armLim.pressing()){ 
+        secondCtrl.Screen.print("Arm not up");
+      }
+
+      wait(100, msec);
+      FrontLift.stop();
+
+      ArmUpMsg = false;
+    }
+  }
+  vex::task::sleep(100);
+}
+
 //
 // Main will set up the competition functions and callbacks.
 //
@@ -214,6 +240,7 @@ int main() {
   Competition.drivercontrol(usercontrol);
 
   vex::task t(ClawMotorTask);
+  vex::task tArmUp(ArmTask);
 
   // Run the pre-autonomous function.
   pre_auton();
