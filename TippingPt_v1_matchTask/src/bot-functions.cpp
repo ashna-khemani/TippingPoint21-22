@@ -110,6 +110,68 @@ void drivePD(double targetDistance) {
   BackRightMotor.stop(brake);
 }
 
+
+void drivePDStraight(double targetDistance) {
+  // Brain.Screen.print("HEY BESTIE UWU");
+  double motorspeed = 0, Rmotorspeed = 0, Lmotorspeed = 0, currentDistance = 0,
+         error = (targetDistance - currentDistance), errorSum = 0, deltaE = 0,
+         lastError = 0, maxAllowedError = 1.0, errorTimerMax = 50;
+  double kP = 5, kI = 0.05, kD = 0; // 15, 1/20: 10 0 17 ->5 0.05 0, actually PI again lmao
+  bool timerExpired = false;
+  timer errorTimer = timer();
+
+    float headingError = 0;
+    float currentHeading = InertialSensor.heading(rotationUnits::deg);
+    float targetHeading = currentHeading;
+
+  errorTimer.clear();
+  FrontRightMotor.resetRotation(); // used front right motor to control driving distance
+  FrontLeftMotor.resetRotation();
+
+  while ((fabs(error) > maxAllowedError) && (timerExpired == false)) {
+    currentDistance = ((FrontRightMotor.rotation(rotationUnits::deg) +
+                        FrontLeftMotor.rotation(rotationUnits::deg)) /
+                       2 / 360) *
+                      WHEELCIRCUMFERENCE;
+    error = targetDistance - currentDistance;
+    errorSum += error;
+    deltaE = (error - lastError) / 5000;
+    //** deltaE = (lastError - error)/-500? How do u get the value of the error
+    //at a given time IN EQUAL INTERVALS)??
+    motorspeed = (error * kP) + (errorSum * kI) + (deltaE * kD);
+
+    currentHeading = InertialSensor.heading(rotationUnits::deg);
+    headingError = targetHeading - currentHeading;
+    if (headingError < -315) {
+      headingError = error + 360;  //modulo 360
+    }
+
+    Rmotorspeed = motorspeed + headingError/360;
+    Lmotorspeed = motorspeed - headingError/360;
+
+
+    BackLeftMotor.spin(directionType::fwd, Lmotorspeed, velocityUnits::pct);
+    FrontLeftMotor.spin(directionType::fwd, Lmotorspeed, velocityUnits::pct);
+    FrontRightMotor.spin(directionType::fwd, Rmotorspeed, velocityUnits::pct);
+    BackRightMotor.spin(directionType::fwd, Rmotorspeed, velocityUnits::pct);
+
+    lastError = error;
+
+    if (fabs(error) > maxAllowedError) {
+      errorTimer.clear();
+    } else {
+      if (errorTimer.time() > errorTimerMax) {
+        timerExpired = true;
+      }
+    }
+    vex::task::sleep(20);
+  }
+  BackLeftMotor.stop(brake);
+  FrontLeftMotor.stop(brake);
+  FrontRightMotor.stop(brake);
+  BackRightMotor.stop(brake);
+}
+
 void stopDriveTrain(void) {
   BackLeftMotor.stop();
   FrontLeftMotor.stop();

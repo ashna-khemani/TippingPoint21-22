@@ -26,6 +26,7 @@ void goBack(float distance, float velocity);
 void slideBackNonBlock(float distance, float velocity);
 
 void turnLeft(float degree);
+void turnLeftSlow(float degree);
 void turnRight(float degree);
 void turnRightSlow(float degree);
 void alignToHeading(float targetHeading);

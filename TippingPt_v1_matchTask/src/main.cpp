@@ -21,7 +21,7 @@ enum MenuItems{
   MIDDLE_GOAL,
   SKILLS_1,
   SKILLS_PUSH,
-  NO_ACTION,
+  NO_ACTION,  // ALSO USED AS A TEST CODE
   MENU_LENGTH,
 };
 
@@ -149,6 +149,15 @@ void autonomous(void) {
       Skills_Push();
       break;
     case NO_ACTION:
+      turnRight(90);
+      vex::task::sleep(3000);
+      turnRightSlow(90);
+      vex::task::sleep(3000);
+      turnLeft(90);
+      vex::task::sleep(3000);
+      turnLeftSlow(90);
+      vex::task::sleep(3000);
+      turnRight(135);
       vex::task::sleep(10000);
 
 
