@@ -21,7 +21,7 @@ motor ConveyorBelt = motor(PORT15, ratio18_1, true);
 
 motor Claw = motor(PORT9, ratio18_1, false);
 
-digital_out BackClamp = digital_out(Brain.ThreeWirePort.F);
+digital_out BackClamp = digital_out(Brain.ThreeWirePort.H);
 encoder liftEncoder = encoder(Brain.ThreeWirePort.B);
 limit armLim = limit(Brain.ThreeWirePort.E);
 

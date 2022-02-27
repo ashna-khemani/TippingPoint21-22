@@ -580,7 +580,7 @@ void backClampClose(){  // Pass air into piston to close
 }
 
 void backClampDrive(){
-  if (BackClamp.value() == 1){  // If open, make it close // new piston
+  if (BackClamp.value() == 0){  // If open, make it close // new piston
     backClampClose();
   }
   else{ // If closed, make it open
